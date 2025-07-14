@@ -29,8 +29,8 @@ const words = [
 ];
 
 const counterItems = [
-    { value: 15, suffix: "+", label: "Years of Experience" },
-    { value: 200, suffix: "+", label: "Satisfied Clients" },
+    { value: 'Fresher', suffix: "+", label: "Years of Experience" },
+    { value: 200, suffix: "+", label: "Certifications" },
     { value: 108, suffix: "+", label: "Completed Projects" },
     { value: 90, suffix: "%", label: "Client Retention Rate" },
 ];
