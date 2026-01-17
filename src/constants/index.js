@@ -1,20 +1,8 @@
 const navLinks = [
-    {
-        name: "Work",
-        link: "#work",
-    },
-    {
-        name: "Experience",
-        link: "#experience",
-    },
-    {
-        name: "Skills",
-        link: "#skills",
-    },
-    {
-        name: "Testimonials",
-        link: "#testimonials",
-    },
+    { name: "Projects", link: "#projects" },
+    { name: "Journey", link: "#journey" },
+    { name: "Skills", link: "#skills" },
+    { name: "Contact", link: "#contact" },
 ];
 
 const words = [
@@ -29,257 +17,134 @@ const words = [
 ];
 
 const counterItems = [
-    { value: 1, suffix: "+", label: "Years of Experience" },
-    { value: 200, suffix: "+", label: "Certifications" },
-    { value: 108, suffix: "+", label: "Completed Projects" },
-    { value: 90, suffix: "%", label: "Client Retention Rate" },
+    { value: 2, suffix: "+", label: "Years of Experience" },
+    { value: 1, suffix: "", label: "Certifications" },
+    { value: 3, suffix: "+", label: "Completed Projects" },
+    { value: 100, suffix: "%", label: "Dedication" },
 ];
 
-const logoIconsList = [
+const projects = [
     {
-        imgPath: "/images/logos/company-logo-1.png",
+        id: 1,
+        title: "Cipher Shield: File Encryption App",
+        description: "An Android file encryption and decryption app using AES, RSA (hybrid encryption) and Huffman compression for secure file protection.",
+        image: "/images/project1.png",
+        tags: ["Java", "Android SDK", "AES/RSA", "Huffman Compression"],
+        liveUrl: "#",
+        githubUrl: "https://github.com/mayankbisht939/cipher-shield"
     },
     {
-        imgPath: "/images/logos/company-logo-2.png",
+        id: 2,
+        title: "Employee Payroll Management",
+        description: "A Java-based application for employee salary processing and payroll operations using MySQL for database management.",
+        image: "/images/project2.png",
+        tags: ["Java", "MySQL", "JDBC", "SQL"],
+        liveUrl: "#",
+        githubUrl: "https://github.com/mayankbisht939/payroll-management"
     },
     {
-        imgPath: "/images/logos/company-logo-3.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-4.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-5.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-6.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-7.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-8.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-9.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-10.png",
-    },
-    {
-        imgPath: "/images/logos/company-logo-11.png",
-    },
+        id: 3,
+        title: "AI Recipe Generator",
+        description: "An AI Recipe Generator using Python, Flask, and Streamlit, integrating LLM APIs to generate structured recipes.",
+        image: "/images/project3.png",
+        tags: ["Python", "Flask", "Streamlit", "LLM API"],
+        liveUrl: "#",
+        githubUrl: "https://github.com/mayankbisht939/ai-recipe-generator"
+    }
 ];
 
-const abilities = [
+const journeyData = [
     {
-        imgPath: "/images/seo.png",
-        title: "Quality Focus",
-        desc: "Delivering high-quality results while maintaining attention to every detail.",
+        year: "2019",
+        type: "education",
+        title: "Secondary (X), CBSE",
+        institution: "Kendriya Vidyalaya No 3 Gwalior",
+        description: "Completed secondary education with 84.00% marks.",
+        icon: "🎓"
     },
     {
-        imgPath: "/images/chat.png",
-        title: "Reliable Communication",
-        desc: "Keeping you updated at every step to ensure transparency and clarity.",
+        year: "2021",
+        type: "education",
+        title: "Senior Secondary (XII), CBSE",
+        institution: "Kendriya Vidyalaya No3 Gwalior",
+        description: "Completed senior secondary education with 91.00% marks.",
+        icon: "🎓"
     },
     {
-        imgPath: "/images/time.png",
-        title: "On-Time Delivery",
-        desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+        year: "2021-2024",
+        type: "education",
+        title: "Bachelor of Computer Applications (BCA)",
+        institution: "Graphic Era Hill University",
+        description: "Completed undergraduate degree in Computer Applications.",
+        icon: "🎓"
     },
+    {
+        year: "2024-2026",
+        type: "education",
+        title: "Master of Computer Applications (MCA)",
+        institution: "Graphic Era Deemed University",
+        description: "Pursuing Master's degree with CGPA: 7.80/10.",
+        icon: "🎓"
+    },
+    {
+        year: "Oct 2025",
+        type: "certification",
+        title: "AWS Cloud Quest: Cloud Practitioner",
+        institution: "Amazon Web Services",
+        description: "Completed AWS Cloud Quest gaining foundational knowledge of cloud computing.",
+        icon: "☁️"
+    }
 ];
 
-const techStackImgs = [
-    {
-        name: "React Developer",
-        imgPath: "/images/logos/react.png",
+const skillCategories = {
+    development: {
+        title: "Development & Frameworks",
+        skills: [
+            { name: "Android Development", level: 85 },
+            { name: "React Native", level: 80 },
+            { name: "Flask", level: 82 },
+            { name: "Streamlit", level: 85 }
+        ]
     },
-    {
-        name: "Python Developer",
-        imgPath: "/images/logos/python.svg",
+    languages: {
+        title: "Programming Languages",
+        skills: [
+            { name: "Java", level: 90 },
+            { name: "Python", level: 88 }
+        ]
     },
-    {
-        name: "Backend Developer",
-        imgPath: "/images/logos/node.png",
+    database: {
+        title: "Database Management",
+        skills: [
+            { name: "MongoDB", level: 80 },
+            { name: "SQL", level: 85 },
+            { name: "Firebase", level: 78 }
+        ]
     },
-    {
-        name: "Interactive Developer",
-        imgPath: "/images/logos/three.png",
-    },
-    {
-        name: "Project Manager",
-        imgPath: "/images/logos/git.svg",
-    },
-];
+    devops: {
+        title: "DevOps & Tools",
+        skills: [
+            { name: "AWS Cloud", level: 75 },
+            { name: "Docker", level: 70 },
+            { name: "Git & GitHub", level: 88 },
+            { name: "Linux", level: 80 }
+        ]
+    }
+};
 
-const techStackIcons = [
-    {
-        name: "React Developer",
-        modelPath: "/models/react_logo-transformed.glb",
-        scale: 1,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Python Developer",
-        modelPath: "/models/python-transformed.glb",
-        scale: 0.8,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Backend Developer",
-        modelPath: "/models/node-transformed.glb",
-        scale: 5,
-        rotation: [0, -Math.PI / 2, 0],
-    },
-    {
-        name: "Interactive Developer",
-        modelPath: "/models/three.js-transformed.glb",
-        scale: 0.05,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Project Manager",
-        modelPath: "/models/git-svg-transformed.glb",
-        scale: 0.05,
-        rotation: [0, -Math.PI / 4, 0],
-    },
-];
-
-const expCards = [
-    {
-        review:
-            "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-        imgPath: "/images/exp1.png",
-        logoPath: "/images/logo1.png",
-        title: "Frontend Developer",
-        date: "January 2023 - Present",
-        responsibilities: [
-            "Developed and maintained user-facing features for the Hostinger website.",
-            "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-            "Optimized web applications for maximum speed and scalability.",
-        ],
-    },
-    {
-        review:
-            "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-        imgPath: "/images/exp2.png",
-        logoPath: "/images/logo2.png",
-        title: "Full Stack Developer",
-        date: "June 2020 - December 2023",
-        responsibilities: [
-            "Led the development of Docker's web applications, focusing on scalability.",
-            "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
-            "Contributed to open-source projects that were used with the Docker ecosystem.",
-        ],
-    },
-    {
-        review:
-            "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-        imgPath: "/images/exp3.png",
-        logoPath: "/images/logo3.png",
-        title: "React Native Developer",
-        date: "March 2019 - May 2020",
-        responsibilities: [
-            "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
-            "Improved app performance and user experience through code optimization and testing.",
-            "Coordinated with the product team to implement features based on feedback.",
-        ],
-    },
-];
-
-const expLogos = [
-    {
-        name: "logo1",
-        imgPath: "/images/logo1.png",
-    },
-    {
-        name: "logo2",
-        imgPath: "/images/logo2.png",
-    },
-    {
-        name: "logo3",
-        imgPath: "/images/logo3.png",
-    },
-];
-
-const testimonials = [
-    {
-        name: "Esther Howard",
-        mentions: "@estherhoward",
-        review:
-            "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
-        imgPath: "/images/client1.png",
-    },
-    {
-        name: "Wade Warren",
-        mentions: "@wadewarren",
-        review:
-            "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
-        imgPath: "/images/client3.png",
-    },
-    {
-        name: "Guy Hawkins",
-        mentions: "@guyhawkins",
-        review:
-            "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-        imgPath: "/images/client2.png",
-    },
-    {
-        name: "Marvin McKinney",
-        mentions: "@marvinmckinney",
-        review:
-            "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-        imgPath: "/images/client5.png",
-    },
-    {
-        name: "Floyd Miles",
-        mentions: "@floydmiles",
-        review:
-            "Adrian’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-        imgPath: "/images/client4.png",
-    },
-    {
-        name: "Albert Flores",
-        mentions: "@albertflores",
-        review:
-            "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-        imgPath: "/images/client6.png",
-    },
-];
-
-const socialImgs = [
-    {
-        name: "insta",
-        url: "https://www.instagram.com/",
-        imgPath: "/images/insta.png",
-    },
-    {
-        name: "fb",
-        url: "https://www.facebook.com/",
-        imgPath: "/images/fb.png",
-    },
-    {
-        name: "x",
-        url: "https://www.x.com/",
-        imgPath: "/images/x.png",
-    },
-    {
-        name: "linkedin",
-        url: "https://www.linkedin.com/",
-        imgPath: "/images/linkedin.png",
-    },
+const socialLinks = [
+    { name: "GitHub", url: "https://github.com/wolverine9039", icon: "💻" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/mayank-bisht-51069524b", icon: "💼" },
+    { name: "Email", url: "mailto:mayankbisht939@gmail.com", icon: "📧" },
+    { name: "Phone", url: "tel:+916397902354", icon: "📱" }
 ];
 
 export {
     words,
-    abilities,
-    logoIconsList,
     counterItems,
-    expCards,
-    expLogos,
-    testimonials,
-    socialImgs,
-    techStackIcons,
-    techStackImgs,
+    projects,
+    journeyData,
+    skillCategories,
+    socialLinks,
     navLinks,
 };

@@ -1,0 +1,186 @@
+import { useState } from 'react';
+
+const Journey = ({ isDark }) => {
+    const [activeIndex, setActiveIndex] = useState(null);
+
+    const timelineData = [
+        {
+            year: "2019",
+            type: "education",
+            title: "Secondary (X), CBSE",
+            institution: "Kendriya Vidyalaya No 3 Gwalior",
+            description: "Completed secondary education with 84.00% marks. Built a strong foundation in science and mathematics.",
+            icon: "🎓",
+            color: "from-blue-500 to-cyan-500"
+        },
+        {
+            year: "2021",
+            type: "education",
+            title: "Senior Secondary (XII), CBSE",
+            institution: "Kendriya Vidyalaya No3 Gwalior",
+            description: "Completed senior secondary education with 91.00% marks. Focused on Science stream with Computer Science.",
+            icon: "🎓",
+            color: "from-purple-500 to-pink-500"
+        },
+        {
+            year: "2021 - 2024",
+            type: "education",
+            title: "Bachelor of Computer Applications (BCA)",
+            institution: "Graphic Era Hill University",
+            description: "Completed undergraduate degree in Computer Applications. Developed strong programming fundamentals and built multiple projects.",
+            icon: "🎓",
+            color: "from-indigo-500 to-purple-500"
+        },
+        {
+            year: "2024 - 2026",
+            type: "education",
+            title: "Master of Computer Applications (MCA), CSIT",
+            institution: "Graphic Era Deemed University",
+            description: "Pursuing Master's degree with CGPA: 7.80/10. Focused on advanced software development, Android development, Java, and Python.",
+            icon: "🎓",
+            color: "from-green-500 to-emerald-500"
+        },
+        {
+            year: "Oct 2025",
+            type: "certification",
+            title: "AWS Cloud Quest: Cloud Practitioner Training Badge",
+            institution: "Amazon Web Services (AWS), Virtual",
+            description: "Completed AWS Cloud Quest gaining foundational knowledge of cloud computing, AWS core services, architecture principles, security and compliance, IAM, pricing and billing models, and basic deployment concepts.",
+            icon: "☁️",
+            color: "from-orange-500 to-yellow-500"
+        }
+    ];
+
+    return (
+        <section id="journey" className={`py-20 px-5 md:px-20 ${isDark ? 'bg-gradient-to-b from-black via-gray-900 to-black' : 'bg-gradient-to-b from-white via-gray-50 to-white'}`}>
+            <div className="max-w-6xl mx-auto">
+                {/* Section Header */}
+                <div className="mb-20 text-center">
+                    <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-black'}`}>
+                        My <span className={`bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'} bg-clip-text text-transparent`}>Journey</span>
+                    </h2>
+                    <p className={`text-lg md:text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                        Education & Certifications
+                    </p>
+                </div>
+
+                {/* Timeline */}
+                <div className="relative">
+                    {/* Central Line */}
+                    <div className={`absolute left-1/2 transform -translate-x-1/2 h-full w-1 ${isDark ? 'bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400'}`} />
+
+                    {/* Timeline Items */}
+                    <div className="space-y-12">
+                        {timelineData.map((item, index) => (
+                            <div
+                                key={index}
+                                className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                                onMouseEnter={() => setActiveIndex(index)}
+                                onMouseLeave={() => setActiveIndex(null)}
+                            >
+                                {/* Content Card */}
+                                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                                    <div
+                                        className={`relative p-6 rounded-2xl transition-all duration-500 transform hover:scale-105
+                                        ${isDark ? 'bg-gray-800/50 border border-white/10' : 'bg-white border border-black/10'}
+                                        ${activeIndex === index ? 'shadow-2xl' : 'shadow-lg'}
+                                        backdrop-blur-sm`}
+                                    >
+                                        {/* Glow Effect */}
+                                        {activeIndex === index && (
+                                            <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-20 rounded-2xl blur-xl transition-opacity duration-500`} />
+                                        )}
+
+                                        <div className="relative z-10">
+                                            {/* Year Badge */}
+                                            <div className={`inline-block px-4 py-1 rounded-full text-sm font-semibold mb-3 bg-gradient-to-r ${item.color} text-white`}>
+                                                {item.year}
+                                            </div>
+
+                                            {/* Title */}
+                                            <h3 className={`text-xl md:text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+                                                {item.title}
+                                            </h3>
+
+                                            {/* Institution */}
+                                            <p className={`text-sm md:text-base font-medium mb-3 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+                                                {item.institution}
+                                            </p>
+
+                                            {/* Description */}
+                                            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                                {item.description}
+                                            </p>
+
+                                            {/* Type Badge */}
+                                            <div className={`mt-4 inline-block px-3 py-1 rounded-full text-xs font-medium
+                                            ${item.type === 'education'
+                                                    ? isDark ? 'bg-purple-500/20 text-purple-400' : 'bg-purple-100 text-purple-600'
+                                                    : isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-600'
+                                                }`}>
+                                                {item.type === 'education' ? '🎓 Education' : '📜 Certification'}
+                                            </div>
+                                        </div>
+
+                                        {/* Arrow pointing to timeline */}
+                                        <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rotate-45 ${isDark ? 'bg-gray-800' : 'bg-white'}
+                                        ${index % 2 === 0 ? '-right-2' : '-left-2'}`} />
+                                    </div>
+                                </div>
+
+                                {/* Center Icon */}
+                                <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                                    <div
+                                        className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl transition-all duration-500 transform
+                                        ${activeIndex === index ? 'scale-125' : 'scale-100'}
+                                        bg-gradient-to-r ${item.color} shadow-2xl`}
+                                    >
+                                        {item.icon}
+                                    </div>
+                                </div>
+
+                                {/* Empty space on other side */}
+                                <div className="w-5/12" />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Start Point */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-12">
+                        <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-blue-500' : 'bg-blue-600'} animate-pulse`} />
+                    </div>
+
+                    {/* End Point */}
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-12">
+                        <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-pink-500' : 'bg-pink-600'} animate-pulse`} />
+                    </div>
+                </div>
+
+                {/* Stats Summary */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+                    {[
+                        { value: "7+", label: "Years Learning" },
+                        { value: "2", label: "Degrees" },
+                        { value: "1", label: "Certifications" },
+                        { value: "3+", label: "Projects Built" }
+                    ].map((stat, index) => (
+                        <div
+                            key={index}
+                            className={`p-6 rounded-2xl text-center transition-all duration-300 hover:scale-105
+                            ${isDark ? 'bg-gray-800/50 border border-white/10' : 'bg-white border border-black/10'}`}
+                        >
+                            <div className={`text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'} bg-clip-text text-transparent`}>
+                                {stat.value}
+                            </div>
+                            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                {stat.label}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Journey;
