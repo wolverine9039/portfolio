@@ -58,29 +58,29 @@ const Contact = ({ isDark }) => {
     ];
 
     return (
-        <section id="contact" className={`py-20 px-5 md:px-20 ${isDark ? 'bg-gradient-to-b from-black via-gray-900 to-black' : 'bg-gradient-to-b from-white via-gray-50 to-white'}`}>
+        <section id="contact" className={`py-12 md:py-20 px-4 md:px-20 ${isDark ? 'bg-gradient-to-b from-black via-gray-900 to-black' : 'bg-gradient-to-b from-white via-gray-50 to-white'}`}>
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
-                <div className="mb-16 text-center">
-                    <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-black'}`}>
+                <div className="mb-10 md:mb-16 text-center">
+                    <h2 className={`text-3xl md:text-6xl font-bold mb-3 md:mb-4 ${isDark ? 'text-white' : 'text-black'}`}>
                         Let's <span className={`bg-gradient-to-r ${isDark ? 'from-purple-400 to-pink-400' : 'from-purple-600 to-pink-600'} bg-clip-text text-transparent`}>Connect</span>
                     </h2>
-                    <p className={`text-lg md:text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <p className={`text-sm md:text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                         Have a project in mind? Let's make it happen!
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
                     {/* Left: Contact Form */}
-                    <div className={`p-8 rounded-2xl ${isDark ? 'bg-gray-900/50 border border-white/10' : 'bg-white border border-black/10'} backdrop-blur-sm`}>
-                        <h3 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
+                    <div className={`p-5 md:p-8 rounded-xl md:rounded-2xl ${isDark ? 'bg-gray-900/50 border border-white/10' : 'bg-white border border-black/10'} backdrop-blur-sm`}>
+                        <h3 className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
                             Send a Message
                         </h3>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                             {/* Name Input */}
                             <div>
-                                <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                                <label className={`block text-xs md:text-sm font-medium mb-1.5 md:mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Your Name
                                 </label>
                                 <input
@@ -89,7 +89,7 @@ const Contact = ({ isDark }) => {
                                     value={formData.name}
                                     onChange={handleChange}
                                     required
-                                    className={`w-full px-4 py-3 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-500 outline-none
+                                    className={`w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-500 outline-none text-sm md:text-base
                                     ${isDark
                                             ? 'bg-gray-800 text-white border border-white/10 focus:bg-gray-700'
                                             : 'bg-gray-50 text-black border border-black/10 focus:bg-white'
@@ -100,7 +100,7 @@ const Contact = ({ isDark }) => {
 
                             {/* Email Input */}
                             <div>
-                                <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                                <label className={`block text-xs md:text-sm font-medium mb-1.5 md:mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Email Address
                                 </label>
                                 <input
@@ -109,7 +109,7 @@ const Contact = ({ isDark }) => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
-                                    className={`w-full px-4 py-3 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-500 outline-none
+                                    className={`w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-500 outline-none text-sm md:text-base
                                     ${isDark
                                             ? 'bg-gray-800 text-white border border-white/10 focus:bg-gray-700'
                                             : 'bg-gray-50 text-black border border-black/10 focus:bg-white'
@@ -120,7 +120,7 @@ const Contact = ({ isDark }) => {
 
                             {/* Message Input */}
                             <div>
-                                <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                                <label className={`block text-xs md:text-sm font-medium mb-1.5 md:mb-2 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Your Message
                                 </label>
                                 <textarea
@@ -128,8 +128,8 @@ const Contact = ({ isDark }) => {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
-                                    rows="5"
-                                    className={`w-full px-4 py-3 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-500 outline-none resize-none
+                                    rows="4"
+                                    className={`w-full px-3 md:px-4 py-2.5 md:py-3 rounded-lg transition-all duration-300 focus:ring-2 focus:ring-purple-500 outline-none resize-none text-sm md:text-base
                                     ${isDark
                                             ? 'bg-gray-800 text-white border border-white/10 focus:bg-gray-700'
                                             : 'bg-gray-50 text-black border border-black/10 focus:bg-white'
@@ -142,7 +142,7 @@ const Contact = ({ isDark }) => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`w-full py-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed
+                                className={`w-full py-3 md:py-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-[1.02] md:hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base
                                 ${isDark
                                         ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white'
                                         : 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white'
@@ -150,7 +150,7 @@ const Contact = ({ isDark }) => {
                             >
                                 {isSubmitting ? (
                                     <span className="flex items-center justify-center gap-2">
-                                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                         Sending...
                                     </span>
                                 ) : (
@@ -160,7 +160,7 @@ const Contact = ({ isDark }) => {
 
                             {/* Success Message */}
                             {submitStatus === 'success' && (
-                                <div className={`p-4 rounded-lg ${isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-600'} text-center animate-fade-in`}>
+                                <div className={`p-3 md:p-4 rounded-lg ${isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-600'} text-center animate-fade-in text-sm md:text-base`}>
                                     ✓ Message sent successfully! I'll get back to you soon.
                                 </div>
                             )}
@@ -168,65 +168,65 @@ const Contact = ({ isDark }) => {
                     </div>
 
                     {/* Right: Contact Info & Social Links */}
-                    <div className="space-y-8">
+                    <div className="space-y-4 md:space-y-8">
                         {/* Contact Info Card */}
-                        <div className={`p-8 rounded-2xl ${isDark ? 'bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-white/10' : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-black/10'} backdrop-blur-sm`}>
-                            <h3 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
+                        <div className={`p-5 md:p-8 rounded-xl md:rounded-2xl ${isDark ? 'bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-white/10' : 'bg-gradient-to-br from-purple-50 to-pink-50 border border-black/10'} backdrop-blur-sm`}>
+                            <h3 className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
                                 Get in Touch
                             </h3>
 
-                            <div className="space-y-4">
-                                <div className="flex items-start gap-4">
-                                    <div className={`p-3 rounded-lg ${isDark ? 'bg-purple-500/20' : 'bg-purple-100'}`}>
-                                        <span className="text-2xl">📍</span>
+                            <div className="space-y-3 md:space-y-4">
+                                <div className="flex items-start gap-3 md:gap-4">
+                                    <div className={`p-2 md:p-3 rounded-lg ${isDark ? 'bg-purple-500/20' : 'bg-purple-100'}`}>
+                                        <span className="text-xl md:text-2xl">📍</span>
                                     </div>
                                     <div>
-                                        <p className={`font-medium ${isDark ? 'text-white' : 'text-black'}`}>Location</p>
-                                        <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Lane-3, Turner Road, Dehradun, India</p>
+                                        <p className={`font-medium text-sm md:text-base ${isDark ? 'text-white' : 'text-black'}`}>Location</p>
+                                        <p className={`text-xs md:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Lane-3, Turner Road, Dehradun, India</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start gap-4">
-                                    <div className={`p-3 rounded-lg ${isDark ? 'bg-blue-500/20' : 'bg-blue-100'}`}>
-                                        <span className="text-2xl">📧</span>
+                                <div className="flex items-start gap-3 md:gap-4">
+                                    <div className={`p-2 md:p-3 rounded-lg ${isDark ? 'bg-blue-500/20' : 'bg-blue-100'}`}>
+                                        <span className="text-xl md:text-2xl">📧</span>
                                     </div>
                                     <div>
-                                        <p className={`font-medium ${isDark ? 'text-white' : 'text-black'}`}>Email</p>
-                                        <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>mayankbisht939@gmail.com</p>
+                                        <p className={`font-medium text-sm md:text-base ${isDark ? 'text-white' : 'text-black'}`}>Email</p>
+                                        <p className={`text-xs md:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'} break-all`}>mayankbisht939@gmail.com</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-start gap-4">
-                                    <div className={`p-3 rounded-lg ${isDark ? 'bg-green-500/20' : 'bg-green-100'}`}>
-                                        <span className="text-2xl">📱</span>
+                                <div className="flex items-start gap-3 md:gap-4">
+                                    <div className={`p-2 md:p-3 rounded-lg ${isDark ? 'bg-green-500/20' : 'bg-green-100'}`}>
+                                        <span className="text-xl md:text-2xl">📱</span>
                                     </div>
                                     <div>
-                                        <p className={`font-medium ${isDark ? 'text-white' : 'text-black'}`}>Phone</p>
-                                        <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>+91 6397902354</p>
+                                        <p className={`font-medium text-sm md:text-base ${isDark ? 'text-white' : 'text-black'}`}>Phone</p>
+                                        <p className={`text-xs md:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>+91 6397902354</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Social Links */}
-                        <div className={`p-8 rounded-2xl ${isDark ? 'bg-gray-900/50 border border-white/10' : 'bg-white border border-black/10'} backdrop-blur-sm`}>
-                            <h3 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
+                        <div className={`p-5 md:p-8 rounded-xl md:rounded-2xl ${isDark ? 'bg-gray-900/50 border border-white/10' : 'bg-white border border-black/10'} backdrop-blur-sm`}>
+                            <h3 className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
                                 Connect on Social
                             </h3>
 
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-4 md:grid-cols-2 gap-2 md:gap-4">
                                 {socialLinks.map((social, index) => (
                                     <a
                                         key={index}
                                         href={social.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className={`p-4 rounded-xl transition-all duration-300 transform hover:scale-105 text-center
+                                        className={`p-3 md:p-4 rounded-lg md:rounded-xl transition-all duration-300 transform hover:scale-105 text-center
                                         ${isDark ? 'bg-gray-800 border border-white/10' : 'bg-gray-50 border border-black/10'}
                                         ${social.color}`}
                                     >
-                                        <div className="text-3xl mb-2">{social.icon}</div>
-                                        <p className={`text-sm font-medium ${isDark ? 'text-white' : 'text-black'}`}>
+                                        <div className="text-2xl md:text-3xl mb-0.5 md:mb-2">{social.icon}</div>
+                                        <p className={`text-[10px] md:text-sm font-medium ${isDark ? 'text-white' : 'text-black'}`}>
                                             {social.name}
                                         </p>
                                     </a>
@@ -235,14 +235,14 @@ const Contact = ({ isDark }) => {
                         </div>
 
                         {/* Availability Badge */}
-                        <div className={`p-6 rounded-2xl text-center ${isDark ? 'bg-green-500/20 border border-green-500/30' : 'bg-green-50 border border-green-200'}`}>
-                            <div className="flex items-center justify-center gap-2 mb-2">
-                                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                                <span className={`font-bold ${isDark ? 'text-green-400' : 'text-green-600'}`}>
+                        <div className={`p-4 md:p-6 rounded-xl md:rounded-2xl text-center ${isDark ? 'bg-green-500/20 border border-green-500/30' : 'bg-green-50 border border-green-200'}`}>
+                            <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
+                                <div className="w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse" />
+                                <span className={`font-bold text-sm md:text-base ${isDark ? 'text-green-400' : 'text-green-600'}`}>
                                     Available for Freelance
                                 </span>
                             </div>
-                            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                            <p className={`text-xs md:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                                 Open to new opportunities and collaborations
                             </p>
                         </div>

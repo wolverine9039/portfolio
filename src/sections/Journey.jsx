@@ -52,68 +52,86 @@ const Journey = ({ isDark }) => {
     ];
 
     return (
-        <section id="journey" className={`py-20 px-5 md:px-20 ${isDark ? 'bg-gradient-to-b from-black via-gray-900 to-black' : 'bg-gradient-to-b from-white via-gray-50 to-white'}`}>
+        <section id="journey" className={`py-12 md:py-20 px-4 md:px-20 ${isDark ? 'bg-gradient-to-b from-black via-gray-900 to-black' : 'bg-gradient-to-b from-white via-gray-50 to-white'}`}>
             <div className="max-w-6xl mx-auto">
                 {/* Section Header */}
-                <div className="mb-20 text-center">
-                    <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-black'}`}>
+                <div className="mb-12 md:mb-20 text-center">
+                    <h2 className={`text-3xl md:text-6xl font-bold mb-4 ${isDark ? 'text-white' : 'text-black'}`}>
                         My <span className={`bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'} bg-clip-text text-transparent`}>Journey</span>
                     </h2>
-                    <p className={`text-lg md:text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <p className={`text-base md:text-xl ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                         Education & Certifications
                     </p>
                 </div>
 
-                {/* Timeline */}
+                {/* Timeline - Mobile: Single column, Desktop: Alternating */}
                 <div className="relative">
-                    {/* Central Line */}
-                    <div className={`absolute left-1/2 transform -translate-x-1/2 h-full w-1 ${isDark ? 'bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400'}`} />
+                    {/* Central Line - Hidden on mobile, shown on md+ */}
+                    <div className={`hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 ${isDark ? 'bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400'}`} />
+
+                    {/* Mobile Line - Left aligned */}
+                    <div className={`md:hidden absolute left-4 top-0 h-full w-1 ${isDark ? 'bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500' : 'bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400'}`} />
 
                     {/* Timeline Items */}
-                    <div className="space-y-12">
+                    <div className="space-y-8 md:space-y-12">
                         {timelineData.map((item, index) => (
                             <div
                                 key={index}
-                                className={`relative flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                                className={`relative flex items-start md:items-center 
+                                    /* Mobile: Always left aligned with icon on left */
+                                    pl-12 md:pl-0
+                                    /* Desktop: Alternating layout */
+                                    ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                                 onMouseEnter={() => setActiveIndex(index)}
                                 onMouseLeave={() => setActiveIndex(null)}
                             >
-                                {/* Content Card */}
-                                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                                {/* Mobile Icon - Absolute left positioned */}
+                                <div className="md:hidden absolute left-0 top-0 z-10">
                                     <div
-                                        className={`relative p-6 rounded-2xl transition-all duration-500 transform hover:scale-105
+                                        className={`w-8 h-8 rounded-full flex items-center justify-center text-lg transition-all duration-500 transform
+                                        ${activeIndex === index ? 'scale-110' : 'scale-100'}
+                                        bg-gradient-to-r ${item.color} shadow-lg`}
+                                    >
+                                        {item.icon}
+                                    </div>
+                                </div>
+
+                                {/* Content Card - Full width on mobile, half on desktop */}
+                                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
+                                    <div
+                                        className={`relative p-4 md:p-6 rounded-xl md:rounded-2xl transition-all duration-500 transform hover:scale-[1.02] md:hover:scale-105
                                         ${isDark ? 'bg-gray-800/50 border border-white/10' : 'bg-white border border-black/10'}
                                         ${activeIndex === index ? 'shadow-2xl' : 'shadow-lg'}
                                         backdrop-blur-sm`}
                                     >
                                         {/* Glow Effect */}
                                         {activeIndex === index && (
-                                            <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-20 rounded-2xl blur-xl transition-opacity duration-500`} />
+                                            <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-20 rounded-xl md:rounded-2xl blur-xl transition-opacity duration-500`} />
                                         )}
 
                                         <div className="relative z-10">
                                             {/* Year Badge */}
-                                            <div className={`inline-block px-4 py-1 rounded-full text-sm font-semibold mb-3 bg-gradient-to-r ${item.color} text-white`}>
+                                            <div className={`inline-block px-3 py-1 rounded-full text-xs md:text-sm font-semibold mb-2 md:mb-3 bg-gradient-to-r ${item.color} text-white`}>
                                                 {item.year}
                                             </div>
 
                                             {/* Title */}
-                                            <h3 className={`text-xl md:text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+                                            <h3 className={`text-lg md:text-2xl font-bold mb-1 md:mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
                                                 {item.title}
                                             </h3>
 
                                             {/* Institution */}
-                                            <p className={`text-sm md:text-base font-medium mb-3 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+                                            <p className={`text-xs md:text-base font-medium mb-2 md:mb-3 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
                                                 {item.institution}
                                             </p>
 
-                                            {/* Description */}
-                                            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                                            {/* Description - Hidden on very small screens, truncated on mobile */}
+                                            <p className={`text-xs md:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'} line-clamp-3 md:line-clamp-none`}>
                                                 {item.description}
                                             </p>
 
                                             {/* Type Badge */}
-                                            <div className={`mt-4 inline-block px-3 py-1 rounded-full text-xs font-medium
+                                            <div className={`mt-3 md:mt-4 inline-block px-2 md:px-3 py-1 rounded-full text-xs font-medium
                                             ${item.type === 'education'
                                                     ? isDark ? 'bg-purple-500/20 text-purple-400' : 'bg-purple-100 text-purple-600'
                                                     : isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-600'
@@ -122,14 +140,14 @@ const Journey = ({ isDark }) => {
                                             </div>
                                         </div>
 
-                                        {/* Arrow pointing to timeline */}
-                                        <div className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 rotate-45 ${isDark ? 'bg-gray-800' : 'bg-white'}
+                                        {/* Arrow pointing to timeline - Desktop only */}
+                                        <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 rotate-45 ${isDark ? 'bg-gray-800' : 'bg-white'}
                                         ${index % 2 === 0 ? '-right-2' : '-left-2'}`} />
                                     </div>
                                 </div>
 
-                                {/* Center Icon */}
-                                <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                                {/* Desktop Center Icon */}
+                                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
                                     <div
                                         className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl transition-all duration-500 transform
                                         ${activeIndex === index ? 'scale-125' : 'scale-100'}
@@ -139,25 +157,25 @@ const Journey = ({ isDark }) => {
                                     </div>
                                 </div>
 
-                                {/* Empty space on other side */}
-                                <div className="w-5/12" />
+                                {/* Empty space on other side - Desktop only */}
+                                <div className="hidden md:block w-5/12" />
                             </div>
                         ))}
                     </div>
 
-                    {/* Start Point */}
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-12">
+                    {/* Start Point - Desktop only */}
+                    <div className="hidden md:block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-12">
                         <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-blue-500' : 'bg-blue-600'} animate-pulse`} />
                     </div>
 
-                    {/* End Point */}
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-12">
+                    {/* End Point - Desktop only */}
+                    <div className="hidden md:block absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-12">
                         <div className={`w-8 h-8 rounded-full ${isDark ? 'bg-pink-500' : 'bg-pink-600'} animate-pulse`} />
                     </div>
                 </div>
 
                 {/* Stats Summary */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-12 md:mt-20">
                     {[
                         { value: "7+", label: "Years Learning" },
                         { value: "2", label: "Degrees" },
@@ -166,13 +184,13 @@ const Journey = ({ isDark }) => {
                     ].map((stat, index) => (
                         <div
                             key={index}
-                            className={`p-6 rounded-2xl text-center transition-all duration-300 hover:scale-105
+                            className={`p-4 md:p-6 rounded-xl md:rounded-2xl text-center transition-all duration-300 hover:scale-105
                             ${isDark ? 'bg-gray-800/50 border border-white/10' : 'bg-white border border-black/10'}`}
                         >
-                            <div className={`text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'} bg-clip-text text-transparent`}>
+                            <div className={`text-2xl md:text-4xl font-bold mb-1 md:mb-2 bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'} bg-clip-text text-transparent`}>
                                 {stat.value}
                             </div>
-                            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                            <div className={`text-xs md:text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                                 {stat.label}
                             </div>
                         </div>
