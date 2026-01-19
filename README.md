@@ -16,7 +16,7 @@
 
 ---
 
-## 🎯 About This Project
+##  About This Project
 
 Welcome to my digital playground! This isn't just another portfolio—it's a **fully interactive 3D experience** built to showcase my skills, projects, and journey as a developer. Navigate through floating particles, explore animated sections, and discover what drives my passion for building impactful software.
 
