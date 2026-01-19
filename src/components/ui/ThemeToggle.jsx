@@ -1,9 +1,9 @@
-const ThemeToggle = ({ isDark, setIsDark }) => {
+const ThemeToggle = ({ isDark, setIsDark, className = "" }) => {
     return (
-        <div className="fixed right-8 top-32 z-50">
+        <div className={`relative ${className}`}>
             <button
                 onClick={() => setIsDark(!isDark)}
-                className="relative w-16 h-16 rounded-full overflow-hidden shadow-2xl transition-all duration-500 hover:scale-110 group"
+                className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden shadow-lg transition-all duration-500 hover:scale-110 group"
                 aria-label="Toggle theme"
             >
                 {/* Animated Background */}
@@ -21,16 +21,16 @@ const ThemeToggle = ({ isDark, setIsDark }) => {
                 >
                     <div className="relative">
                         {/* Sun center */}
-                        <div className="w-6 h-6 bg-white rounded-full shadow-lg animate-spin-slow" />
+                        <div className="w-4 h-4 md:w-5 md:h-5 bg-white rounded-full shadow-lg animate-spin-slow" />
                         {/* Sun rays */}
                         {[...Array(8)].map((_, i) => (
                             <div
                                 key={i}
-                                className="absolute w-0.5 h-2.5 bg-white rounded-full animate-pulse"
+                                className="absolute w-0.5 h-1.5 md:h-2 bg-white rounded-full animate-pulse"
                                 style={{
                                     top: '50%',
                                     left: '50%',
-                                    transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-14px)`,
+                                    transform: `translate(-50%, -50%) rotate(${i * 45}deg) translateY(-10px)`,
                                     animationDelay: `${i * 0.1}s`
                                 }}
                             />
@@ -45,17 +45,17 @@ const ThemeToggle = ({ isDark, setIsDark }) => {
                 >
                     <div className="relative">
                         {/* Moon */}
-                        <div className="w-6 h-6 bg-gray-100 rounded-full shadow-lg" />
-                        <div className="absolute top-0.5 right-0 w-5 h-5 bg-indigo-900 rounded-full" />
+                        <div className="w-4 h-4 md:w-5 md:h-5 bg-gray-100 rounded-full shadow-lg" />
+                        <div className="absolute top-0.5 right-0 w-3 h-3 md:w-4 md:h-4 bg-indigo-900 rounded-full" />
 
                         {/* Stars */}
                         {[...Array(3)].map((_, i) => (
                             <div
                                 key={i}
-                                className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+                                className="absolute w-0.5 h-0.5 md:w-1 md:h-1 bg-white rounded-full animate-twinkle"
                                 style={{
-                                    top: `${[5, -3, 2][i]}px`,
-                                    left: `${[-12, 10, -8][i]}px`,
+                                    top: `${[3, -2, 1][i]}px`,
+                                    left: `${[-8, 6, -5][i]}px`,
                                     animationDelay: `${i * 0.3}s`
                                 }}
                             />
@@ -66,11 +66,6 @@ const ThemeToggle = ({ isDark, setIsDark }) => {
                 {/* Ripple effect on click */}
                 <div className="absolute inset-0 rounded-full group-active:animate-ping bg-white/30" />
             </button>
-
-            {/* Tooltip */}
-            <div className={`absolute -left-24 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all duration-300 opacity-0 group-hover:opacity-100 ${isDark ? 'bg-white text-black' : 'bg-black text-white'}`}>
-                {isDark ? 'Light Mode' : 'Dark Mode'}
-            </div>
         </div>
     );
 };

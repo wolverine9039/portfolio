@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -10,6 +11,11 @@ const AppShowcase = () => {
     const cipherRef = useRef(null);
     const payrollRef = useRef(null);
     const recipeRef = useRef(null);
+    const navigate = useNavigate();
+
+    const handleProjectClick = (id) => {
+        navigate(`/project/${id}`);
+    };
 
     useGSAP(() => {
         // Animation for the main section
@@ -47,7 +53,7 @@ const AppShowcase = () => {
         <div id="work" ref={sectionRef} className="app-showcase">
             <div className="w-full">
                 <div className="showcaselayout">
-                    <div ref={cipherRef} className="first-project-wrapper">
+                    <div ref={cipherRef} className="first-project-wrapper cursor-pointer" onClick={() => handleProjectClick(1)}>
                         <div className="image-wrapper">
                             <img src="/images/project1.png" alt="Cipher Shield App Interface" />
                         </div>
@@ -63,17 +69,17 @@ const AppShowcase = () => {
                     </div>
 
                     <div className="project-list-wrapper overflow-hidden">
-                        <div className="project" ref={payrollRef}>
+                        <div className="project cursor-pointer" ref={payrollRef} onClick={() => handleProjectClick(2)}>
                             <div className="image-wrapper bg-[#E8F4FD]">
                                 <img
                                     src="/images/project2.png"
-                                    alt="Employee Payroll Management System"
+                                    alt="Calorix - AI Fitness Tracker"
                                 />
                             </div>
-                            <h2>Employee Payroll Management System</h2>
+                            <h2>Calorix - AI Fitness & Nutrition Tracker</h2>
                         </div>
 
-                        <div className="project" ref={recipeRef}>
+                        <div className="project cursor-pointer" ref={recipeRef} onClick={() => handleProjectClick(3)}>
                             <div className="image-wrapper bg-[#E8F5E9]">
                                 <img src="/images/project3.png" alt="AI Recipe Generator" />
                             </div>

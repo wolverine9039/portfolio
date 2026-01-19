@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Float } from '@react-three/drei';
+
 
 const Skills = ({ isDark }) => {
     const [activeCategory, setActiveCategory] = useState('development');
@@ -87,8 +86,8 @@ const Skills = ({ isDark }) => {
                 </div>
 
                 {/* Skills Display */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-                    {/* Left: Skill Bars */}
+                <div className="max-w-4xl mx-auto">
+                    {/* Skills Display */}
                     <div className={`p-5 md:p-8 rounded-xl md:rounded-2xl ${isDark ? 'bg-gray-900/50 border border-white/10' : 'bg-gray-50 border border-black/10'}`}>
                         <h3 className={`text-xl md:text-2xl font-bold mb-4 md:mb-6 ${isDark ? 'text-white' : 'text-black'}`}>
                             {skillCategories[activeCategory].title}
@@ -128,45 +127,7 @@ const Skills = ({ isDark }) => {
                         </div>
                     </div>
 
-                    {/* Right: Interactive 3D Visualization - Smaller on mobile */}
-                    <div className={`rounded-xl md:rounded-2xl overflow-hidden ${isDark ? 'bg-gray-900/50 border border-white/10' : 'bg-gray-50 border border-black/10'}`}>
-                        <div className="h-[280px] md:h-[500px]">
-                            <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
-                                <ambientLight intensity={0.5} />
-                                <pointLight position={[10, 10, 10]} intensity={1} />
-                                <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4f46e5" />
 
-                                {/* Floating Skill Spheres */}
-                                {skillCategories[activeCategory].skills.map((skill, index) => (
-                                    <Float
-                                        key={index}
-                                        speed={1 + index * 0.2}
-                                        rotationIntensity={0.5}
-                                        floatIntensity={0.5}
-                                    >
-                                        <mesh position={[
-                                            Math.cos(index * 1.047) * 3,
-                                            Math.sin(index * 0.5) * 2,
-                                            Math.sin(index * 1.047) * 2
-                                        ]}>
-                                            <sphereGeometry args={[0.5, 32, 32]} />
-                                            <meshStandardMaterial
-                                                color={index % 2 === 0 ? "#4f46e5" : "#ec4899"}
-                                                metalness={0.8}
-                                                roughness={0.2}
-                                            />
-                                        </mesh>
-                                    </Float>
-                                ))}
-
-                                {/* Central Icon */}
-                                <mesh>
-                                    <boxGeometry args={[1, 1, 1]} />
-                                    <meshStandardMaterial color="#6366f1" wireframe />
-                                </mesh>
-                            </Canvas>
-                        </div>
-                    </div>
                 </div>
 
                 {/* Skill Tags Cloud */}

@@ -1,7 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Projects = ({ isDark }) => {
     const [, setHoveredProject] = useState(null);
+    const navigate = useNavigate();
+
+    const handleProjectClick = (projectId) => {
+        navigate(`/project/${projectId}`);
+    };
 
     const projects = [
         {
@@ -22,18 +28,19 @@ const Projects = ({ isDark }) => {
         },
         {
             id: 2,
-            title: "Employee Payroll Management",
-            period: "Sep 2025 - Dec 2025",
-            description: "A Java-based application developed to automate employee salary processing and payroll operations. Uses MySQL for secure and efficient database management with CRUD operations and role-based access.",
+            title: "Calorix: AI Fitness & Nutrition Tracker",
+            period: "Nov 2025 - Jan 2026",
+            description: "An AI-powered mobile fitness and nutrition tracking application featuring personalized workout plans, calorie tracking, AI-driven recipe recommendations, and comprehensive health analytics.",
             features: [
-                "Implemented CRUD operations for employee and payroll data",
-                "Automated salary calculation including allowances and deductions",
-                "Used JDBC for database connectivity and data persistence",
-                "Designed and optimized SQL queries for payroll processing",
-                "Generated pay slips and payroll reports"
+                "Developed cross-platform mobile app using React Native",
+                "Integrated AI for personalized workout and meal recommendations",
+                "Implemented real-time calorie tracking and nutrition analytics",
+                "Built backend with MongoDB for user data and workout history",
+                "Added Firebase authentication and cloud storage",
+                "Created interactive dashboards with progress visualization"
             ],
             image: "/images/project2.png",
-            tags: ["Java", "MySQL", "JDBC", "SQL Queries"],
+            tags: ["React Native", "MongoDB", "AI/ML", "Firebase", "Node.js"],
             gradient: "from-blue-600 to-cyan-600",
             bgColor: isDark ? "bg-blue-900/20" : "bg-blue-50"
         },
@@ -77,7 +84,8 @@ const Projects = ({ isDark }) => {
                             key={project.id}
                             onMouseEnter={() => setHoveredProject(project.id)}
                             onMouseLeave={() => setHoveredProject(null)}
-                            className={`group relative rounded-xl md:rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] md:hover:scale-105 ${project.bgColor}`}
+                            onClick={() => handleProjectClick(project.id)}
+                            className={`group relative rounded-xl md:rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.02] md:hover:scale-105 ${project.bgColor} cursor-pointer`}
                             style={{
                                 transitionDelay: `${index * 100}ms`
                             }}
@@ -144,6 +152,10 @@ const Projects = ({ isDark }) => {
 
                                     {/* View Project Button - Always visible on mobile */}
                                     <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleProjectClick(project.id);
+                                        }}
                                         className={`w-full py-2.5 md:py-3 rounded-lg font-medium transition-all duration-300 text-sm md:text-base
                                         bg-gradient-to-r ${project.gradient} text-white
                                         md:transform md:group-hover:shadow-xl md:opacity-0 md:group-hover:opacity-100 md:translate-y-4 md:group-hover:translate-y-0`}
@@ -170,7 +182,7 @@ const Projects = ({ isDark }) => {
                     </button>
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 

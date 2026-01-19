@@ -27,9 +27,7 @@ body {
     color: white !important;
 }
 
-section {
-    width: 100dvw;
-}
+
 
 @theme {
     --font-sans: "Mona Sans", sans-serif;
