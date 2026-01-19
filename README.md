@@ -1,4 +1,4 @@
-# 🚀 Mayank Bisht | 3D Portfolio
+#  Mayank Bisht | 3D Portfolio
 
 <div align="center">
 
