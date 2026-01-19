@@ -6,7 +6,7 @@
 ![Made with Love](https://img.shields.io/badge/Made_with-❤️-red?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
-### ✨ Where Code Meets Creativity ✨
+### ✨ Where Code Meets Creativity 
 
 *An immersive 3D portfolio experience showcasing my journey as a Software Developer*
 
