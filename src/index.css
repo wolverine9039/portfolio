@@ -131,6 +131,10 @@ body {
         @apply xl:w-[70%] md:w-full w-[70%] h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 md:right-0 right-[15%];
     }
 
+    .hero-3d-layout-mobile {
+        @apply w-full h-[40vh] min-h-[300px] relative;
+    }
+
     .cta-wrapper {
         @apply relative z-20 cursor-pointer;
     }

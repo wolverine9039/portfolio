@@ -28,9 +28,9 @@ const Hero = () => {
             </div>
             <div className="hero-layout">
                 {/* LEFT: HERO Content */}
-                <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-4">
+                <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-4 hero-content-wrapper">
                     <div className="flex flex-col gap-4 md:gap-7">
-                        <div className="hero-text">
+                        <div className="hero-text order-1">
                             <h1>
                                 Shaping
                                 <span className="slide">
@@ -55,18 +55,26 @@ const Hero = () => {
                             <h1>into Real Projects</h1>
                             <h1>that Deliver Results</h1>
                         </div>
-                        <p className="text-white-50 text-sm md:text-xl relative z-10 pointer-events-none max-w-xl">
-                            Hi, I'm Mayank Bisht — Software Developer & MCA Student specializing in Android, Java, and Python development
+                        <p className="text-white-50 text-sm md:text-xl relative z-10 pointer-events-none max-w-xl order-2">
+                            Hi, I'm Mayank Bisht — Software Developer & MCA Student specializing in Android, Java, Python development and AI intergration.
                         </p>
+
+                        {/* Right 3d model - appears here on mobile */}
+                        <figure className="order-3 md:hidden">
+                            <div className="hero-3d-layout-mobile">
+                                <HeroExperience />
+                            </div>
+                        </figure>
+
                         <Button
-                            className="md:w-80 md:h-16 w-full h-12"
+                            className="md:w-80 md:h-16 w-full h-12 order-4"
                             id="button"
                             text="See my work" />
                     </div>
 
                 </header>
-                {/* Right 3d model */}
-                <figure>
+                {/* Right 3d model - desktop only */}
+                <figure className="hidden md:block">
                     <div className="hero-3d-layout" >
                         <HeroExperience />
                     </div>
