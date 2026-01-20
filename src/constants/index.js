@@ -17,7 +17,7 @@ const words = [
 ];
 
 const counterItems = [
-    { value: 2, suffix: "+", label: "Years of Experience" },
+    { value: null, suffix: "", label: "Open for Work" },
     { value: 1, suffix: "", label: "Certifications" },
     { value: 5, suffix: "+", label: "Completed Projects" },
     { value: 100, suffix: "%", label: "Dedication" },

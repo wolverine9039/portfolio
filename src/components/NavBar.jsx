@@ -50,9 +50,14 @@ const NavBar = ({ isDark, setIsDark }) => {
             <div className="mx-auto flex items-center justify-between max-w-7xl">
                 <a
                     href="#hero"
-                    className={`text-xl md:text-2xl font-bold transition-all duration-300 hover:scale-105 
+                    className={`flex items-center gap-3 text-xl md:text-2xl font-bold transition-all duration-300 hover:scale-105 
                     ${isDark ? 'text-white' : 'text-black'}`}
                 >
+                    <img
+                        src="/images/profile1.png"
+                        alt="Mayank Bisht"
+                        className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-purple-500 shadow-lg object-cover"
+                    />
                     Mayank Bisht
                 </a>
 
