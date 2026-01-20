@@ -139,8 +139,9 @@ I'm a passionate developer focused on building **secure, efficient, and user-cen
 | Project | Description | Tech Stack |
 |---------|-------------|------------|
 | 🔐 **Cipher Shield** | Android file encryption app with AES-RSA hybrid encryption | Java, Android SDK, Huffman Compression |
-| 💰 **Payroll Management** | Employee salary & payroll automation system | Java, MySQL, JDBC |
-| 🍳 **AI Recipe Generator** | LLM-powered recipe generation with Streamlit UI | Python, Flask, OpenRouter API |
+| 💰 **Calorix** | AI-powered fitness & nutrition tracking application | React Native, MongoDB, AI/ML, Firebase |
+| 🍳 **AI Recipe Generator** | LLM-powered recipe generation with Streamlit UI | Python, Flask, OpenRouter API, Streamlit |
+| 🚀 **CI/CD Pipeline** | Automated Jenkins, Ansible & Docker deployment on AWS EC2 | Jenkins, Ansible, Docker, AWS EC2, DevOps |
 
 ## 📊 Skills
 

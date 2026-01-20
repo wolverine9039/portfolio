@@ -61,6 +61,24 @@ const Projects = ({ isDark }) => {
             tags: ["Python", "Flask", "Streamlit", "LLM API", "OpenRouter"],
             gradient: "from-green-600 to-emerald-600",
             bgColor: isDark ? "bg-green-900/20" : "bg-green-50"
+        },
+        {
+            id: 4,
+            title: "Automated CI/CD Pipeline with Jenkins & Docker",
+            period: "Nov 2024 - Dec 2024",
+            description: "A fully automated CI/CD pipeline using Jenkins, Ansible, and Docker on AWS EC2. Developers push code to GitHub, and the system automatically builds, tests, and deploys to production without manual intervention.",
+            features: [
+                "Set up 2 AWS EC2 instances: Jenkins/Ansible server and Docker deployment server",
+                "Configured GitHub webhook integration for automatic code push detection",
+                "Built Jenkins pipeline for automated build, test, and Docker image creation",
+                "Implemented Ansible playbooks for orchestrating Docker container deployment",
+                "Achieved zero-touch deployment from code commit to production",
+                "Added automated rollback mechanism for failed deployments"
+            ],
+            image: "/images/project4.png",
+            tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
+            gradient: "from-orange-600 to-red-600",
+            bgColor: isDark ? "bg-orange-900/20" : "bg-orange-50"
         }
     ];
 

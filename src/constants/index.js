@@ -49,7 +49,7 @@ const projects = [
         image: "/images/project1.png",
         tags: ["Java", "Android SDK", "AES/RSA", "Huffman Compression"],
         liveUrl: "#",
-        githubUrl: "https://github.com/mayankbisht939/cipher-shield"
+        githubUrl: "https://github.com/wolverine9039/Cipher-Shield.git"
     },
     {
         id: 2,
@@ -76,7 +76,7 @@ const projects = [
         image: "/images/project2.png",
         tags: ["React Native", "MongoDB", "AI/ML", "Firebase"],
         liveUrl: "#",
-        githubUrl: "https://github.com/mayankbisht939/calorix"
+        githubUrl: "https://github.com/wolverine9039/Calorix.git"
     },
     {
         id: 3,
@@ -103,7 +103,35 @@ const projects = [
         image: "/images/project3.png",
         tags: ["Python", "Flask", "Streamlit", "LLM API"],
         liveUrl: "#",
-        githubUrl: "https://github.com/mayankbisht939/ai-recipe-generator"
+        githubUrl: "https://github.com/wolverine9039/personalized_recipe_ai.git"
+    },
+    {
+        id: 4,
+        title: "Automated CI/CD Pipeline with Jenkins & Docker",
+        description: "A fully automated CI/CD pipeline using Jenkins, Ansible, and Docker on AWS EC2 for zero-touch deployment from code push to production.",
+        longDescription: "This DevOps automation project demonstrates enterprise-level CI/CD practices by creating a fully automated deployment pipeline. The architecture uses two AWS EC2 instances: one hosting Jenkins and Ansible for orchestration, and another running Docker for containerized application deployment. When developers push code to GitHub, webhooks trigger Jenkins to automatically build, test, containerize, and deploy the application without any manual intervention. Ansible playbooks handle the deployment orchestration, ensuring consistent and reliable deployments across environments.",
+        challenges: [
+            "Configuring secure communication between Jenkins server and Docker deployment server.",
+            "Implementing automated rollback mechanism for failed deployments.",
+            "Managing Docker container lifecycle and ensuring zero-downtime deployments."
+        ],
+        solutions: [
+            "Set up SSH key-based authentication and Ansible vault for secure credential management.",
+            "Developed custom Jenkins pipeline scripts with health checks and automatic rollback triggers.",
+            "Implemented blue-green deployment strategy using Docker containers with health monitoring."
+        ],
+        features: [
+            "Two-tier EC2 Architecture (Jenkins/Ansible + Docker Server)",
+            "GitHub Webhook Integration for Auto-triggering",
+            "Automated Build, Test, and Deployment Pipeline",
+            "Ansible Playbook Orchestration",
+            "Docker Containerization and Deployment",
+            "Automated Rollback on Failure"
+        ],
+        image: "/images/project4.png",
+        tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
+        liveUrl: "#",
+        githubUrl: "https://github.com/wolverine9039/portfolio"
     }
 ];
 
@@ -180,6 +208,8 @@ const skillCategories = {
         skills: [
             { name: "AWS Cloud", level: 75 },
             { name: "Docker", level: 70 },
+            { name: "Jenkins", level: 72 },
+            { name: "Ansible", level: 72 },
             { name: "Git & GitHub", level: 88 },
             { name: "Linux", level: 80 }
         ]
