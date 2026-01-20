@@ -15,16 +15,32 @@ body {
 
 /* Default light mode */
 body {
-    background-color: white;
+    background-color: #fafafa;
     color: black;
     transition: background-color 0.5s ease, color 0.5s ease;
+    /* Redesigned: Tech Dot Matrix */
+    background-image:
+        radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.15) 0%, transparent 30%);
+    background-size: 24px 24px, 100% 100%, 100% 100%;
+    background-attachment: fixed;
 }
 
 /* Dark mode when .dark class is present */
 .dark body,
 .dark {
-    background-color: black !important;
+    background-color: #050505 !important;
     color: white !important;
+    /* Redesigned: Cyber-Grid with Deep Glows */
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 50% -20%, rgba(120, 119, 198, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 0% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 100% 50%, rgba(236, 72, 153, 0.08) 0%, transparent 50%);
+    background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%;
+    background-attachment: fixed;
 }
 
 

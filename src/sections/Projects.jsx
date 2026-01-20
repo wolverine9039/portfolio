@@ -11,20 +11,22 @@ const Projects = ({ isDark }) => {
 
     const projects = [
         {
-            id: 1,
-            title: "Cipher Shield: File Encryption App",
-            period: "Jan 2025 - Jun 2025",
-            description: "An Android file encryption and decryption app using AES, RSA (hybrid encryption) and Huffman compression to provide secure file encryption, key management, and safe decryption.",
+            id: 4,
+            title: "Automated CI/CD Pipeline with Jenkins & Docker",
+            period: "Nov 2024 - Dec 2024",
+            description: "A fully automated CI/CD pipeline using Jenkins, Ansible, and Docker on AWS EC2. Developers push code to GitHub, and the system automatically builds, tests, and deploys to production without manual intervention.",
             features: [
-                "Implemented hybrid encryption (AES + RSA) for secure and efficient file protection",
-                "Designed key management and password-based encryption mechanisms",
-                "Integrated Huffman compression for optimized encrypted file storage",
-                "Enabled secure decryption with automatic original file restoration"
+                "Set up 2 AWS EC2 instances: Jenkins/Ansible server and Docker deployment server",
+                "Configured GitHub webhook integration for automatic code push detection",
+                "Built Jenkins pipeline for automated build, test, and Docker image creation",
+                "Implemented Ansible playbooks for orchestrating Docker container deployment",
+                "Achieved zero-touch deployment from code commit to production",
+                "Added automated rollback mechanism for failed deployments"
             ],
-            image: "/images/project1.png",
-            tags: ["Java", "Android SDK", "AES/RSA Encryption", "Huffman Compression"],
-            gradient: "from-purple-600 to-pink-600",
-            bgColor: isDark ? "bg-purple-900/20" : "bg-purple-50"
+            image: "/images/project4.png",
+            tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
+            gradient: "from-orange-600 to-red-600",
+            bgColor: isDark ? "bg-orange-900/20" : "bg-orange-50"
         },
         {
             id: 2,
@@ -63,22 +65,38 @@ const Projects = ({ isDark }) => {
             bgColor: isDark ? "bg-green-900/20" : "bg-green-50"
         },
         {
-            id: 4,
-            title: "Automated CI/CD Pipeline with Jenkins & Docker",
-            period: "Nov 2024 - Dec 2024",
-            description: "A fully automated CI/CD pipeline using Jenkins, Ansible, and Docker on AWS EC2. Developers push code to GitHub, and the system automatically builds, tests, and deploys to production without manual intervention.",
+            id: 1,
+            title: "Cipher Shield: File Encryption App",
+            period: "Jan 2025 - Jun 2025",
+            description: "An Android file encryption and decryption app using AES, RSA (hybrid encryption) and Huffman compression to provide secure file encryption, key management, and safe decryption.",
             features: [
-                "Set up 2 AWS EC2 instances: Jenkins/Ansible server and Docker deployment server",
-                "Configured GitHub webhook integration for automatic code push detection",
-                "Built Jenkins pipeline for automated build, test, and Docker image creation",
-                "Implemented Ansible playbooks for orchestrating Docker container deployment",
-                "Achieved zero-touch deployment from code commit to production",
-                "Added automated rollback mechanism for failed deployments"
+                "Implemented hybrid encryption (AES + RSA) for secure and efficient file protection",
+                "Designed key management and password-based encryption mechanisms",
+                "Integrated Huffman compression for optimized encrypted file storage",
+                "Enabled secure decryption with automatic original file restoration"
             ],
-            image: "/images/project4.png",
-            tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
-            gradient: "from-orange-600 to-red-600",
-            bgColor: isDark ? "bg-orange-900/20" : "bg-orange-50"
+            image: "/images/project1.png",
+            tags: ["Java", "Android SDK", "AES/RSA Encryption", "Huffman Compression"],
+            gradient: "from-purple-600 to-pink-600",
+            bgColor: isDark ? "bg-purple-900/20" : "bg-purple-50"
+        },
+        {
+            id: 5,
+            title: "Employee Payroll Management System",
+            period: "Aug 2024 - Oct 2024",
+            description: "A comprehensive payroll management system built with Java and MySQL for automated salary calculations, employee data management, and payment processing with JDBC connectivity.",
+            features: [
+                "Developed desktop application using Java Swing for intuitive UI",
+                "Implemented MySQL database for employee records and salary data",
+                "Automated salary calculations with tax deductions and allowances",
+                "Built JDBC connectivity for real-time database operations",
+                "Generated detailed payroll reports and payment slips",
+                "Added employee attendance tracking and leave management"
+            ],
+            image: "/images/project5.png",
+            tags: ["Java", "MySQL", "JDBC", "Swing UI", "Database"],
+            gradient: "from-teal-600 to-green-600",
+            bgColor: isDark ? "bg-teal-900/20" : "bg-teal-50"
         }
     ];
 
@@ -187,17 +205,6 @@ const Projects = ({ isDark }) => {
                             </div>
                         </div>
                     ))}
-                </div>
-
-                {/* View All Projects Button */}
-                <div className="mt-10 md:mt-16 text-center">
-                    <button className={`px-6 py-3 md:px-8 md:py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 border-2 text-sm md:text-base
-                    ${isDark
-                            ? 'border-white/20 text-white hover:bg-white hover:text-black'
-                            : 'border-black/20 text-black hover:bg-black hover:text-white'
-                        }`}>
-                        View All Projects
-                    </button>
                 </div>
             </div>
         </section >

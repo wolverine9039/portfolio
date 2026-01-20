@@ -44,7 +44,7 @@ const App = () => {
 
     return (
         <div className={`${isDark ? 'dark' : ''} transition-colors duration-500`}>
-            <div className="bg-white dark:bg-black text-black dark:text-white min-h-screen">
+            <div className="bg-gray-50 dark:bg-black text-black dark:text-white min-h-screen">
                 <NavBar isDark={isDark} setIsDark={setIsDark} />
                 <AnimatePresence mode="wait">
                     <Routes location={location} key={location.pathname}>

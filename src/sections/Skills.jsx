@@ -43,6 +43,8 @@ const Skills = ({ isDark }) => {
             skills: [
                 { name: "AWS Cloud", level: 75, icon: "☁️" },
                 { name: "Docker", level: 70, icon: "🐳" },
+                { name: "Jenkins", level: 72, icon: "🏗️" },
+                { name: "Ansible", level: 72, icon: "🤖" },
                 { name: "Git & GitHub", level: 88, icon: "📦" },
                 { name: "Linux", level: 80, icon: "🐧" }
             ]

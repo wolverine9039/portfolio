@@ -19,37 +19,38 @@ const words = [
 const counterItems = [
     { value: 2, suffix: "+", label: "Years of Experience" },
     { value: 1, suffix: "", label: "Certifications" },
-    { value: 3, suffix: "+", label: "Completed Projects" },
+    { value: 5, suffix: "+", label: "Completed Projects" },
     { value: 100, suffix: "%", label: "Dedication" },
 ];
 
 const projects = [
     {
-        id: 1,
-        title: "Cipher Shield: File Encryption App",
-        description: "An Android file encryption and decryption app using AES, RSA (hybrid encryption) and Huffman compression for secure file protection.",
-        longDescription: "Cipher Shield is a robust Android application designed to provide military-grade security for your files on mobile devices. Leveraging a hybrid encryption approach, it combines the speed of AES for data encryption with the security of RSA for key exchange. Additionally, it integrates Huffman compression to optimize storage space for encrypted files without compromising data integrity.",
+        id: 4,
+        title: "Automated CI/CD Pipeline with Jenkins & Docker",
+        description: "A fully automated CI/CD pipeline using Jenkins, Ansible, and Docker on AWS EC2 for zero-touch deployment from code push to production.",
+        longDescription: "This DevOps automation project demonstrates enterprise-level CI/CD practices by creating a fully automated deployment pipeline. The architecture uses two AWS EC2 instances: one hosting Jenkins and Ansible for orchestration, and another running Docker for containerized application deployment. When developers push code to GitHub, webhooks trigger Jenkins to automatically build, test, containerize, and deploy the application without any manual intervention. Ansible playbooks handle the deployment orchestration, ensuring consistent and reliable deployments across environments.",
         challenges: [
-            "Implementing hybrid encryption (AES + RSA) efficiently on mobile hardware.",
-            "Managing large file streams during encryption to prevent memory overflows.",
-            "Designing a secure key management system that is user-friendly."
+            "Configuring secure communication between Jenkins server and Docker deployment server.",
+            "Implementing automated rollback mechanism for failed deployments.",
+            "Managing Docker container lifecycle and ensuring zero-downtime deployments."
         ],
         solutions: [
-            "Used efficient streaming algorithms to handle large files chunk by chunk.",
-            "Implemented a custom key store mechanism to securely manage RSA key pairs.",
-            "Optimized Huffman compression algorithms for better performance on ARM architectures."
+            "Set up SSH key-based authentication and Ansible vault for secure credential management.",
+            "Developed custom Jenkins pipeline scripts with health checks and automatic rollback triggers.",
+            "Implemented blue-green deployment strategy using Docker containers with health monitoring."
         ],
         features: [
-            "Hybrid Encryption (AES-256 + RSA-2048)",
-            "Huffman Compression for space efficiency",
-            "Secure Key Management",
-            "Intuitive Material Design UI",
-            "File Integrity Verification"
+            "Two-tier EC2 Architecture (Jenkins/Ansible + Docker Server)",
+            "GitHub Webhook Integration for Auto-triggering",
+            "Automated Build, Test, and Deployment Pipeline",
+            "Ansible Playbook Orchestration",
+            "Docker Containerization and Deployment",
+            "Automated Rollback on Failure"
         ],
-        image: "/images/project1.png",
-        tags: ["Java", "Android SDK", "AES/RSA", "Huffman Compression"],
+        image: "/images/project4.png",
+        tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
         liveUrl: "#",
-        githubUrl: "https://github.com/wolverine9039/Cipher-Shield.git"
+        githubUrl: "https://github.com/wolverine9039/portfolio"
     },
     {
         id: 2,
@@ -106,32 +107,59 @@ const projects = [
         githubUrl: "https://github.com/wolverine9039/personalized_recipe_ai.git"
     },
     {
-        id: 4,
-        title: "Automated CI/CD Pipeline with Jenkins & Docker",
-        description: "A fully automated CI/CD pipeline using Jenkins, Ansible, and Docker on AWS EC2 for zero-touch deployment from code push to production.",
-        longDescription: "This DevOps automation project demonstrates enterprise-level CI/CD practices by creating a fully automated deployment pipeline. The architecture uses two AWS EC2 instances: one hosting Jenkins and Ansible for orchestration, and another running Docker for containerized application deployment. When developers push code to GitHub, webhooks trigger Jenkins to automatically build, test, containerize, and deploy the application without any manual intervention. Ansible playbooks handle the deployment orchestration, ensuring consistent and reliable deployments across environments.",
+        id: 1,
+        title: "Cipher Shield: File Encryption App",
+        description: "An Android file encryption and decryption app using AES, RSA (hybrid encryption) and Huffman compression for secure file protection.",
+        longDescription: "Cipher Shield is a robust Android application designed to provide military-grade security for your files on mobile devices. Leveraging a hybrid encryption approach, it combines the speed of AES for data encryption with the security of RSA for key exchange. Additionally, it integrates Huffman compression to optimize storage space for encrypted files without compromising data integrity.",
         challenges: [
-            "Configuring secure communication between Jenkins server and Docker deployment server.",
-            "Implementing automated rollback mechanism for failed deployments.",
-            "Managing Docker container lifecycle and ensuring zero-downtime deployments."
+            "Implementing hybrid encryption (AES + RSA) efficiently on mobile hardware.",
+            "Managing large file streams during encryption to prevent memory overflows.",
+            "Designing a secure key management system that is user-friendly."
         ],
         solutions: [
-            "Set up SSH key-based authentication and Ansible vault for secure credential management.",
-            "Developed custom Jenkins pipeline scripts with health checks and automatic rollback triggers.",
-            "Implemented blue-green deployment strategy using Docker containers with health monitoring."
+            "Used efficient streaming algorithms to handle large files chunk by chunk.",
+            "Implemented a custom key store mechanism to securely manage RSA key pairs.",
+            "Optimized Huffman compression algorithms for better performance on ARM architectures."
         ],
         features: [
-            "Two-tier EC2 Architecture (Jenkins/Ansible + Docker Server)",
-            "GitHub Webhook Integration for Auto-triggering",
-            "Automated Build, Test, and Deployment Pipeline",
-            "Ansible Playbook Orchestration",
-            "Docker Containerization and Deployment",
-            "Automated Rollback on Failure"
+            "Hybrid Encryption (AES-256 + RSA-2048)",
+            "Huffman Compression for space efficiency",
+            "Secure Key Management",
+            "Intuitive Material Design UI",
+            "File Integrity Verification"
         ],
-        image: "/images/project4.png",
-        tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
+        image: "/images/project1.png",
+        tags: ["Java", "Android SDK", "AES/RSA", "Huffman Compression"],
         liveUrl: "#",
-        githubUrl: "https://github.com/wolverine9039/portfolio"
+        githubUrl: "https://github.com/wolverine9039/Cipher-Shield.git"
+    },
+    {
+        id: 5,
+        title: "Employee Payroll Management System",
+        description: "A comprehensive payroll management system built with Java and MySQL for automated salary calculations and employee data management.",
+        longDescription: "The Employee Payroll Management System is a desktop application designed to streamline payroll operations for organizations. Built with Java Swing for an intuitive user interface and MySQL for robust data management, it automates complex salary calculations including tax deductions, allowances, bonuses, and overtime. The system uses JDBC for seamless database connectivity, enabling real-time operations and efficient data retrieval. It simplifies payroll processing by generating detailed reports, payment slips, and maintains comprehensive employee records.",
+        challenges: [
+            "Handling complex salary calculations with multiple deduction and allowance categories.",
+            "Designing an efficient database schema for employee and payroll data relationships.",
+            "Creating a user-friendly interface for non-technical HR staff."
+        ],
+        solutions: [
+            "Developed modular calculation engine with configurable tax rates and allowance rules.",
+            "Implemented normalized database design with proper indexing for optimal query performance.",
+            "Created intuitive Java Swing UI with workflow-based navigation and input validation."
+        ],
+        features: [
+            "Automated Salary Calculations with Tax & Allowances",
+            "Employee Records Management",
+            "Attendance & Leave Tracking",
+            "Payroll Report Generation",
+            "Payment Slip Creation",
+            "JDBC Database Connectivity"
+        ],
+        image: "/images/project5.png",
+        tags: ["Java", "MySQL", "JDBC", "Swing UI"],
+        liveUrl: "#",
+        githubUrl: "#"
     }
 ];
 
