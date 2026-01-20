@@ -213,7 +213,8 @@ const skillCategories = {
             { name: "Android Development", level: 85 },
             { name: "React Native", level: 80 },
             { name: "Flask", level: 82 },
-            { name: "Streamlit", level: 85 }
+            { name: "Streamlit", level: 85 },
+            { name: "AI Integration", level: 82 }
         ]
     },
     languages: {
