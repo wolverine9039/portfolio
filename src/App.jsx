@@ -11,6 +11,9 @@ import Footer from "./components/layout/Footer.jsx";
 import ProjectDetails from "./pages/ProjectDetails.jsx";
 
 
+import React from 'react';
+const TechWebPage = React.lazy(() => import("./pages/TechWebPage.jsx"));
+
 const Home = () => {
     const location = useLocation();
 
@@ -49,6 +52,13 @@ const App = () => {
                     <Routes location={location} key={location.pathname}>
                         <Route path="/" element={<Home />} />
                         <Route path="/project/:id" element={<ProjectDetails />} />
+                        <Route path="/technologies" element={
+                            <div className="h-screen w-full bg-[#050816]">
+                                <React.Suspense fallback={<div>Loading...</div>}>
+                                    <TechWebPage />
+                                </React.Suspense>
+                            </div>
+                        } />
                     </Routes>
                 </AnimatePresence>
                 <Footer />

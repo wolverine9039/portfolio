@@ -19,18 +19,55 @@ const Node = ({
     const nodeSize = isRoot ? 100 : 70;
     const fontSize = isRoot ? '2.5rem' : '2rem';
 
-    const handleMouseMove = (e) => {
-        if (onHover) {
-            // Get the actual screen coordinates from the mouse event
-            onHover(node, e);
+    const [isLongPress, setIsLongPress] = React.useState(false);
+    const longPressTimerRef = React.useRef(null);
+
+    const startLongPress = (e) => {
+        setIsLongPress(false);
+        longPressTimerRef.current = setTimeout(() => {
+            setIsLongPress(true);
+            // Trigger long press callback if available
+            if (onHover) {
+                // Pass event to position the preview (support both touch and mouse)
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                onHover(node, { clientX, clientY, target: e.target });
+            }
+        }, 500); // 500ms for long press
+    };
+
+    const endLongPress = (e) => {
+        // Clear timer
+        if (longPressTimerRef.current) {
+            clearTimeout(longPressTimerRef.current);
+        }
+
+        // If it was a long press, prevent default click behavior
+        if (isLongPress) {
+            e.preventDefault();
+            e.stopPropagation();
+        } else {
+            // Normal click
+            if (e.type !== 'touchmove') {
+                onClick(node);
+            }
         }
     };
 
-    const handleMouseLeave = () => {
-        if (onLeave) {
-            onLeave();
+    const cancelLongPress = () => {
+        if (longPressTimerRef.current) {
+            clearTimeout(longPressTimerRef.current);
         }
     };
+
+    // Unified Handlers
+    const handleTouchStart = (e) => startLongPress(e);
+    const handleTouchEnd = (e) => endLongPress(e);
+    const handleTouchMove = () => cancelLongPress();
+
+    const handleMouseDown = (e) => startLongPress(e);
+    const handleMouseUp = (e) => endLongPress(e);
+    const handleMouseLeave = () => cancelLongPress();
 
     return (
         <motion.g
@@ -43,10 +80,18 @@ const Node = ({
                 damping: 20,
                 delay: animationDelay
             }}
-            style={{ cursor: 'pointer' }}
-            onClick={() => onClick(node)}
-            onMouseMove={handleMouseMove}
+            style={{ cursor: 'pointer', touchAction: 'none' }} // Prevent browser zoom/scroll on the node during press
+
+            // Mouse Events
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
+
+            // Touch Events
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchMove={handleTouchMove}
+
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
         >

@@ -5,52 +5,62 @@ import { motion, AnimatePresence } from 'framer-motion';
  * Node Hover Preview Component
  * Displays node details in a tooltip on hover
  */
-const NodeHoverPreview = ({ node, position, isVisible }) => {
+const NodeHoverPreview = ({ node, isVisible, onClose }) => {
     if (!node || !isVisible) return null;
 
+    // Unified Modal View for both Desktop and Mobile
     return (
         <AnimatePresence>
+            {/* Backdrop */}
             <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                transition={{ duration: 0.2 }}
-                className="fixed z-50 pointer-events-none"
-                style={{
-                    left: `${position.x}px`,
-                    top: `${position.y}px`,
-                    transform: 'translate(-50%, -120%)', // Position above the cursor
-                    maxWidth: '320px'
-                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+                onClick={onClose}
             >
-                <div
-                    className="rounded-lg shadow-2xl border"
+                {/* Modal Card */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    className="w-full max-w-sm rounded-2xl border shadow-2xl overflow-hidden"
                     style={{
                         background: 'rgba(15, 23, 42, 0.98)',
-                        backdropFilter: 'blur(20px)',
                         borderColor: `${node.color}40`,
-                        boxShadow: `0 0 30px ${node.color}30, 0 20px 40px rgba(0,0,0,0.5)`
+                        boxShadow: `0 0 40px ${node.color}20`
                     }}
+                    onClick={(e) => e.stopPropagation()} // Prevent closing when clicking card
                 >
-                    <div className="p-4">
-                        {/* Node Icon & Title */}
-                        <div className="flex items-center gap-3 mb-3">
+                    {/* Close Button */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-3 right-3 p-2 bg-white/10 rounded-full text-gray-400 hover:text-white transition-colors"
+                        title="Close"
+                    >
+                        ✕
+                    </button>
+
+                    <div className="p-6">
+                        {/* Header */}
+                        <div className="flex items-center gap-4 mb-4">
                             <div
-                                className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0"
+                                className="w-16 h-16 rounded-full flex items-center justify-center text-3xl flex-shrink-0"
                                 style={{
                                     backgroundColor: node.color,
-                                    boxShadow: `0 0 15px ${node.color}50`
+                                    boxShadow: `0 0 20px ${node.color}50`
                                 }}
                             >
                                 {node.icon}
                             </div>
-                            <div className="min-w-0">
-                                <h3 className="text-lg font-bold text-white truncate">
+                            <div>
+                                <h3 className="text-xl font-bold text-white leading-tight">
                                     {node.name}
                                 </h3>
                                 {node.children && node.children.length > 0 && (
-                                    <p className="text-xs text-gray-400">
-                                        {node.children.length} technologies
+                                    <p className="text-sm text-gray-400 mt-1">
+                                        {node.children.length} related technologies
                                     </p>
                                 )}
                             </div>
@@ -58,22 +68,22 @@ const NodeHoverPreview = ({ node, position, isVisible }) => {
 
                         {/* Description */}
                         {node.description && (
-                            <p className="text-sm text-gray-300 leading-relaxed mb-3">
+                            <p className="text-base text-gray-300 leading-relaxed mb-4">
                                 {node.description}
                             </p>
                         )}
 
                         {/* Tech Stack Pills */}
                         {node.techStack && node.techStack.length > 0 && (
-                            <div className="mb-3">
-                                <p className="text-xs font-semibold text-gray-400 mb-2">
+                            <div className="mb-4">
+                                <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
                                     Technologies
                                 </p>
-                                <div className="flex flex-wrap gap-1.5">
-                                    {node.techStack.slice(0, 4).map((tech, index) => (
+                                <div className="flex flex-wrap gap-2">
+                                    {node.techStack.map((tech, index) => (
                                         <span
                                             key={index}
-                                            className="px-2 py-1 rounded-md text-xs font-medium"
+                                            className="px-2.5 py-1 rounded-md text-xs font-medium"
                                             style={{
                                                 backgroundColor: `${node.color}20`,
                                                 color: node.color,
@@ -83,81 +93,47 @@ const NodeHoverPreview = ({ node, position, isVisible }) => {
                                             {tech}
                                         </span>
                                     ))}
-                                    {node.techStack.length > 4 && (
-                                        <span className="px-2 py-1 text-xs text-gray-400">
-                                            +{node.techStack.length - 4} more
-                                        </span>
-                                    )}
                                 </div>
                             </div>
                         )}
 
-                        {/* Features Preview */}
+                        {/* Key Features */}
                         {node.features && node.features.length > 0 && (
-                            <div>
-                                <p className="text-xs font-semibold text-gray-400 mb-1.5">
+                            <div className="mb-4">
+                                <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
                                     Key Features
                                 </p>
-                                <ul className="space-y-1">
-                                    {node.features.slice(0, 3).map((feature, index) => (
-                                        <li
-                                            key={index}
-                                            className="flex items-start gap-1.5 text-xs text-gray-300"
-                                        >
-                                            <span
-                                                className="mt-1 w-1 h-1 rounded-full flex-shrink-0"
-                                                style={{ backgroundColor: node.color }}
-                                            />
-                                            <span className="leading-relaxed">{feature}</span>
+                                <ul className="space-y-2">
+                                    {node.features.slice(0, 4).map((feature, index) => (
+                                        <li key={index} className="flex items-start gap-2 text-sm text-gray-300">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: node.color }} />
+                                            <span>{feature}</span>
                                         </li>
                                     ))}
-                                    {node.features.length > 3 && (
-                                        <li className="text-xs text-gray-500 ml-2.5">
-                                            +{node.features.length - 3} more features
-                                        </li>
-                                    )}
                                 </ul>
                             </div>
                         )}
 
-                        {/* Project Usage Data - For end nodes only */}
+                        {/* Project Usage Data */}
                         {node.projects && node.projects.length > 0 && (
-                            <div className="mt-3 pt-3 border-t border-gray-700/50">
-                                <p className="text-xs font-semibold text-gray-400 mb-2">
-                                    📂 Used in {node.projects.length} {node.projects.length === 1 ? 'Project' : 'Projects'}
+                            <div className="mb-4 pt-3 border-t border-white/10">
+                                <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">
+                                    Used in Projects
                                 </p>
-                                <div className="space-y-1.5">
+                                <div className="space-y-2">
                                     {node.projects.slice(0, 3).map((project, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-center gap-2 text-xs"
-                                        >
-                                            <div
-                                                className="w-6 h-6 rounded flex items-center justify-center text-[10px] flex-shrink-0"
-                                                style={{
-                                                    backgroundColor: `${node.color}15`,
-                                                    border: `1px solid ${node.color}30`
-                                                }}
-                                            >
-                                                {index + 1}
-                                            </div>
-                                            <span className="text-gray-300 leading-tight truncate">
-                                                {project.title}
-                                            </span>
+                                        <div key={index} className="flex items-center gap-2 text-sm text-gray-300">
+                                            <span className="text-lg">📂</span>
+                                            <span>{project.title}</span>
                                         </div>
                                     ))}
-                                    {node.projects.length > 3 && (
-                                        <p className="text-xs text-gray-500 ml-8">
-                                            +{node.projects.length - 3} more
-                                        </p>
-                                    )}
                                 </div>
                             </div>
                         )}
 
-                        {/* Proficiency Level - For technologies with proficiency data */}
+                        {/* Proficiency Level */}
                         {node.proficiency && (
-                            <div className="mt-3 pt-3 border-t border-gray-700/50">
+                            <div className="pt-3 border-t border-white/10">
                                 <div className="flex justify-between items-center mb-1.5">
                                     <p className="text-xs font-semibold text-gray-400">
                                         Proficiency
@@ -178,20 +154,12 @@ const NodeHoverPreview = ({ node, position, isVisible }) => {
                                 </div>
                             </div>
                         )}
-                    </div>
 
-                    {/* Arrow pointer */}
-                    <div
-                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full"
-                        style={{
-                            width: 0,
-                            height: 0,
-                            borderLeft: '8px solid transparent',
-                            borderRight: '8px solid transparent',
-                            borderTop: `8px solid ${node.color}40`
-                        }}
-                    />
-                </div>
+                        <div className="mt-6 pt-4 border-t border-white/10 text-center">
+                            <p className="text-xs text-gray-500">Tap outside to close</p>
+                        </div>
+                    </div>
+                </motion.div>
             </motion.div>
         </AnimatePresence>
     );

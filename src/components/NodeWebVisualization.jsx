@@ -23,10 +23,10 @@ const NodeWebVisualization = () => {
     const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
     const [isPanning, setIsPanning] = useState(false);
     const [panStart, setPanStart] = useState({ x: 0, y: 0 });
+    const [isMobilePreview, setIsMobilePreview] = useState(false);
 
-    // Calculate positions when nodes expand using tree layout
+    // Calculate positions when nodes expand using local util (debugging mode)
     useEffect(() => {
-        // Use tree layout algorithm for outward directional expansion
         const { positions, connections: newConnections } = calculateTreeLayout(
             nodeWebData,
             expandedNodes
@@ -64,18 +64,21 @@ const NodeWebVisualization = () => {
         }
     };
 
-    const handleNodeHover = (node, event) => {
+    const handleNodeLongPress = (node, event) => {
         if (event) {
             setHoverPosition({
                 x: event.clientX,
                 y: event.clientY
             });
             setHoveredNode(node);
+            // Always enable modal preview for long press
+            setIsMobilePreview(true);
         }
     };
 
-    const handleNodeLeave = () => {
+    const handleClosePreview = () => {
         setHoveredNode(null);
+        setIsMobilePreview(false);
     };
 
     const handleZoomIn = () => {
@@ -135,7 +138,7 @@ const NodeWebVisualization = () => {
                 >
                     <div className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
                         <p className="text-white text-sm font-medium">
-                            👆 Click "Start" to begin • Hover to preview details
+                            👆 Click "Start" to begin • Long press to preview details
                         </p>
                     </div>
                 </motion.div>
@@ -236,8 +239,7 @@ const NodeWebVisualization = () => {
                             position={{ x: pos.x, y: pos.y }}
                             isExpanded={expandedNodes.has(pos.id)}
                             onClick={handleNodeClick}
-                            onHover={handleNodeHover}
-                            onLeave={handleNodeLeave}
+                            onHover={handleNodeLongPress} // Reusing onHover prop name for long press callback
                             isRoot={pos.id === 'start'}
                             animationDelay={index * 0.1}
                         />
@@ -245,11 +247,12 @@ const NodeWebVisualization = () => {
                 </AnimatePresence>
             </svg>
 
-            {/* Hover Preview */}
+            {/* Preview Modal */}
             <NodeHoverPreview
                 node={hoveredNode}
                 position={hoverPosition}
                 isVisible={hoveredNode !== null}
+                onClose={handleClosePreview}
             />
         </div>
     );

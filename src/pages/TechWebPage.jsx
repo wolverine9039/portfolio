@@ -49,7 +49,7 @@ const TechWebPage = () => {
                     Technology Stack
                 </h1>
                 <p className="text-gray-400 text-lg">
-                    Click to expand • Hover to preview
+                    Click to expand • Long press to preview
                 </p>
             </motion.div>
 
@@ -71,7 +71,7 @@ const TechWebPage = () => {
                 className="relative z-10 pb-6 px-4 text-center"
             >
                 <p className="text-gray-500 text-sm">
-                    Interactive technology visualization • Hover for details
+                    Interactive technology visualization • Long press for details
                 </p>
             </motion.div>
         </div>
