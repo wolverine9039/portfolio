@@ -10,7 +10,7 @@ const HeroExperience = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
     return (
-        <Canvas camera={{ position: [28.125, 5.625, 8.4375], fov: 30 }}>
+        <Canvas camera={{ position: [21.09375, 4.21875, 6.328125], fov: 30 }} className={isMobile ? "w-[70%] mx-auto" : ""}>
 
 
             <OrbitControls
@@ -21,7 +21,7 @@ const HeroExperience = () => {
             <HeroLights />
             <Particles count={500} />
             <group
-                scale={isMobile ? 0.7 : 1}
+                scale={isMobile ? 0.6 : 1}
                 position={[0, -3.5, 0]}
                 rotation={[0, Math.PI / 4, 0]}
             >
