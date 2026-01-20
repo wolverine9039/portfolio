@@ -1,0 +1,17 @@
+/* Data Flow Particle Animations */
+
+@keyframes particleGlow {
+
+    0%,
+    100% {
+        filter: drop-shadow(0 0 2px currentColor);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 6px currentColor);
+    }
+}
+
+.particle {
+    animation: particleGlow 1.5s ease-in-out infinite;
+}

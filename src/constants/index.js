@@ -50,7 +50,298 @@ const projects = [
         image: "/images/project4.png",
         tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
         liveUrl: "#",
-        githubUrl: "https://github.com/wolverine9039/portfolio"
+        githubUrl: "https://github.com/wolverine9039/portfolio",
+        stages: [
+            {
+                id: "planning",
+                title: "Planning & Research",
+                description: "Researched CI/CD best practices, AWS architecture patterns, and planned the two-tier infrastructure approach",
+                icon: "🎯",
+                position: { x: -8, y: 0, z: 0 },
+                achievements: [
+                    "Defined automated deployment requirements",
+                    "Chose Jenkins + Ansible + Docker technology stack",
+                    "Planned two-tier EC2 architecture design",
+                    "Researched security best practices"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#3B82F6",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "aws-docs",
+                            name: "AWS Docs",
+                            icon: "📚",
+                            type: "research",
+                            position: { x: -1.5, y: 0.8, z: 0 },
+                            color: "#3B82F6"
+                        },
+                        {
+                            id: "devops-guides",
+                            name: "DevOps Guides",
+                            icon: "📖",
+                            type: "research",
+                            position: { x: 1.5, y: 0.8, z: 0 },
+                            color: "#6366F1"
+                        },
+                        {
+                            id: "architecture",
+                            name: "Architecture Planner",
+                            icon: "🗂️",
+                            type: "planning",
+                            position: { x: 0, y: -0.8, z: 1 },
+                            color: "#8B5CF6"
+                        },
+                        {
+                            id: "requirements",
+                            name: "Requirements Doc",
+                            icon: "📝",
+                            type: "documentation",
+                            position: { x: 0, y: -0.8, z: -1 },
+                            color: "#A855F7"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "aws-docs", to: "architecture", label: "Research Input" },
+                        { from: "devops-guides", to: "architecture", label: "Best Practices" },
+                        { from: "architecture", to: "requirements", label: "Document Plan" }
+                    ]
+                }
+            },
+            {
+                id: "design",
+                title: "Architecture Design",
+                description: "Designed the infrastructure blueprint, pipeline workflow, and deployment strategy",
+                icon: "📐",
+                position: { x: -4, y: 2.5, z: -2 },
+                achievements: [
+                    "Created AWS architecture diagram",
+                    "Designed multi-stage Jenkins pipeline",
+                    "Planned Ansible playbook structure",
+                    "Defined rollback mechanism strategy"
+                ],
+                technologies: ["AWS EC2", "Jenkins", "Ansible", "Docker"],
+                progress: 100,
+                unlocked: true,
+                color: "#8B5CF6",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "lucidchart",
+                            name: "Lucidchart",
+                            icon: "🎨",
+                            type: "design",
+                            position: { x: -1.5, y: 0, z: 1 },
+                            color: "#8B5CF6"
+                        },
+                        {
+                            id: "pipeline-design",
+                            name: "Pipeline Designer",
+                            icon: "🔧",
+                            type: "design",
+                            position: { x: 1.5, y: 0, z: 1 },
+                            color: "#A855F7"
+                        },
+                        {
+                            id: "playbook-structure",
+                            name: "Playbook Structure",
+                            icon: "📋",
+                            type: "planning",
+                            position: { x: -1, y: 0, z: -1 },
+                            color: "#C084FC"
+                        },
+                        {
+                            id: "security-config",
+                            name: "Security Config",
+                            icon: "🔐",
+                            type: "security",
+                            position: { x: 1, y: 0, z: -1 },
+                            color: "#7C3AED"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "lucidchart", to: "pipeline-design", label: "System Design" },
+                        { from: "pipeline-design", to: "playbook-structure", label: "Implementation Plan" },
+                        { from: "lucidchart", to: "security-config", label: "Security Design" }
+                    ]
+                }
+            },
+            {
+                id: "development",
+                title: "Implementation",
+                description: "Built the automated CI/CD pipeline with Jenkins, Ansible playbooks, and Docker containerization",
+                icon: "⚙️",
+                position: { x: 0, y: 0, z: 0 },
+                achievements: [
+                    "Configured Jenkins server on EC2 instance",
+                    "Wrote Ansible deployment playbooks",
+                    "Set up Docker containerization",
+                    "Integrated GitHub webhook triggers",
+                    "Implemented SSH key authentication"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#10B981",
+                // Technology Architecture - Internal components
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "github",
+                            name: "GitHub",
+                            icon: "🔧",
+                            type: "source",
+                            position: { x: -2, y: 0, z: 1 },
+                            color: "#6366F1"
+                        },
+                        {
+                            id: "jenkins",
+                            name: "Jenkins Server",
+                            icon: "🏗️",
+                            type: "ci",
+                            position: { x: 0, y: 1, z: 0 },
+                            color: "#10B981"
+                        },
+                        {
+                            id: "ansible",
+                            name: "Ansible",
+                            icon: "📦",
+                            type: "orchestration",
+                            position: { x: 1, y: 0, z: -1 },
+                            color: "#F59E0B"
+                        },
+                        {
+                            id: "docker",
+                            name: "Docker Server",
+                            icon: "🐳",
+                            type: "deployment",
+                            position: { x: 2, y: 0, z: 1 },
+                            color: "#3B82F6"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "github", to: "jenkins", label: "Webhook Push" },
+                        { from: "jenkins", to: "ansible", label: "Build Trigger" },
+                        { from: "ansible", to: "docker", label: "Deploy Container" }
+                    ]
+                }
+            },
+            {
+                id: "testing",
+                title: "Testing & Debugging",
+                description: "Tested automated deployments, fixed issues, and optimized pipeline performance",
+                icon: "🧪",
+                position: { x: 4, y: 2.5, z: -2 },
+                achievements: [
+                    "Tested end-to-end deployment flow",
+                    "Implemented automated rollback mechanism",
+                    "Debugged security and network configurations",
+                    "Validated webhook automation",
+                    "Performance tested pipeline stages"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#F59E0B",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "test-runner",
+                            name: "Test Runner",
+                            icon: "🏃",
+                            type: "testing",
+                            position: { x: -1.5, y: 0.5, z: 0 },
+                            color: "#F59E0B"
+                        },
+                        {
+                            id: "jenkins-logs",
+                            name: "Jenkins Logs",
+                            icon: "📊",
+                            type: "monitoring",
+                            position: { x: 1.5, y: 0.5, z: 0 },
+                            color: "#FB923C"
+                        },
+                        {
+                            id: "monitoring",
+                            name: "Monitoring Dashboard",
+                            icon: "📈",
+                            type: "monitoring",
+                            position: { x: 0, y: -0.5, z: 1 },
+                            color: "#FDBA74"
+                        },
+                        {
+                            id: "rollback",
+                            name: "Rollback System",
+                            icon: "↩️",
+                            type: "recovery",
+                            position: { x: 0, y: -0.5, z: -1 },
+                            color: "#DC2626"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "test-runner", to: "jenkins-logs", label: "Test Results" },
+                        { from: "jenkins-logs", to: "monitoring", label: "Log Analysis" },
+                        { from: "monitoring", to: "rollback", label: "Failure Trigger" }
+                    ]
+                }
+            },
+            {
+                id: "deployment",
+                title: "Production Launch",
+                description: "Deployed the CI/CD pipeline to production and achieved zero-touch deployments",
+                icon: "🚀",
+                position: { x: 8, y: 0, z: 0 },
+                achievements: [
+                    "Successfully automated code-to-production flow",
+                    "Achieved zero-downtime deployments",
+                    "Monitored pipeline performance metrics",
+                    "Documented deployment procedures"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#EF4444",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "ec2-prod",
+                            name: "AWS EC2 Production",
+                            icon: "☁️",
+                            type: "infrastructure",
+                            position: { x: -1.5, y: 0, z: 0.5 },
+                            color: "#EF4444"
+                        },
+                        {
+                            id: "docker-containers",
+                            name: "Docker Containers",
+                            icon: "🐳",
+                            type: "runtime",
+                            position: { x: 1.5, y: 0, z: 0.5 },
+                            color: "#F87171"
+                        },
+                        {
+                            id: "load-balancer",
+                            name: "Load Balancer",
+                            icon: "⚖️",
+                            type: "networking",
+                            position: { x: 0, y: 0.8, z: -0.5 },
+                            color: "#FCA5A5"
+                        },
+                        {
+                            id: "cloudwatch",
+                            name: "CloudWatch",
+                            icon: "👁️",
+                            type: "monitoring",
+                            position: { x: 0, y: -0.8, z: -0.5 },
+                            color: "#DC2626"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "ec2-prod", to: "docker-containers", label: "Deploy" },
+                        { from: "docker-containers", to: "load-balancer", label: "Traffic" },
+                        { from: "load-balancer", to: "cloudwatch", label: "Metrics" }
+                    ]
+                }
+            }
+        ]
     },
     {
         id: 2,
@@ -74,10 +365,301 @@ const projects = [
             "Progress Analytics Dashboard",
             "Cross-Platform Mobile App"
         ],
-        image: "/images/project2.png",
+        image: "/images/calorix_background.png",
         tags: ["React Native", "MongoDB", "AI/ML", "Firebase"],
         liveUrl: "#",
-        githubUrl: "https://github.com/wolverine9039/Calorix.git"
+        githubUrl: "https://github.com/wolverine9039/Calorix.git",
+        stages: [
+            {
+                id: "planning",
+                title: "Planning & Research",
+                description: "Researched fitness tracking apps, AI integration possibilities, and planned the feature set",
+                icon: "🎯",
+                position: { x: -8, y: 0, z: 0 },
+                achievements: [
+                    "Analyzed competitor fitness apps",
+                    "Defined core features (AI workouts, calorie tracking)",
+                    "Planned MongoDB database schema",
+                    "Researched OpenRouter AI APIs"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#3B82F6",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "market-research",
+                            name: "Market Research",
+                            icon: "📊",
+                            type: "research",
+                            position: { x: -1.5, y: 0.5, z: 0 },
+                            color: "#3B82F6"
+                        },
+                        {
+                            id: "ai-research",
+                            name: "AI APIs Research",
+                            icon: "🤖",
+                            type: "research",
+                            position: { x: 1.5, y: 0.5, z: 0 },
+                            color: "#6366F1"
+                        },
+                        {
+                            id: "tech-stack",
+                            name: "Tech Stack Planning",
+                            icon: "🛠️",
+                            type: "planning",
+                            position: { x: 0, y: -0.5, z: 1 },
+                            color: "#8B5CF6"
+                        },
+                        {
+                            id: "feature-spec",
+                            name: "Feature Specs",
+                            icon: "📝",
+                            type: "documentation",
+                            position: { x: 0, y: -0.5, z: -1 },
+                            color: "#A855F7"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "market-research", to: "tech-stack", label: "Requirements" },
+                        { from: "ai-research", to: "tech-stack", label: "AI Capabilities" },
+                        { from: "tech-stack", to: "feature-spec", label: "Specifications" }
+                    ]
+                }
+            },
+            {
+                id: "design",
+                title: "UI/UX Design",
+                description: "Designed intuitive mobile interface with focus on user experience and data visualization",
+                icon: "📐",
+                position: { x: -4, y: 2.5, z: -2 },
+                achievements: [
+                    "Created wireframes for all screens",
+                    "Designed dashboard with progress charts",
+                    "Planned AI recipe recommendation flow",
+                    "Defined navigation structure"
+                ],
+                technologies: ["React Native", "Figma", "Material Design"],
+                progress: 100,
+                unlocked: true,
+                color: "#8B5CF6",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "figma",
+                            name: "Figma Design",
+                            icon: "🎨",
+                            type: "design",
+                            position: { x: -1.5, y: 0, z: 0.5 },
+                            color: "#8B5CF6"
+                        },
+                        {
+                            id: "wireframes",
+                            name: "Wireframes",
+                            icon: "📱",
+                            type: "design",
+                            position: { x: 1.5, y: 0, z: 0.5 },
+                            color: "#A855F7"
+                        },
+                        {
+                            id: "charts",
+                            name: "Chart Components",
+                            icon: "📈",
+                            type: "components",
+                            position: { x: 0, y: 0.8, z: -0.5 },
+                            color: "#C084FC"
+                        },
+                        {
+                            id: "navigation",
+                            name: "Navigation Flow",
+                            icon: "🧭",
+                            type: "structure",
+                            position: { x: 0, y: -0.8, z: -0.5 },
+                            color: "#7C3AED"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "figma", to: "wireframes", label: "Mockups" },
+                        { from: "wireframes", to: "charts", label: "Dashboard Design" },
+                        { from: "wireframes", to: "navigation", label: "User Flow" }
+                    ]
+                }
+            },
+            {
+                id: "development",
+                title: "Implementation",
+                description: "Built cross-platform mobile app with AI integration, database, and authentication",
+                icon: "⚙️",
+                position: { x: 0, y: 0, z: 0 },
+                achievements: [
+                    "Developed React Native mobile app",
+                    "Integrated OpenRouter AI for personalized recommendations",
+                    "Implemented MongoDB backend with Express",
+                    "Added Firebase authentication",
+                    "Built calorie tracking system",
+                    "Created workout plan generator"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#10B981",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "react-native",
+                            name: "React Native",
+                            icon: "⚛️",
+                            type: "frontend",
+                            position: { x: -2, y: 0, z: 1 },
+                            color: "#10B981"
+                        },
+                        {
+                            id: "openrouter",
+                            name: "OpenRouter AI",
+                            icon: "🤖",
+                            type: "ai",
+                            position: { x: 0, y: 1, z: 0 },
+                            color: "#14B8A6"
+                        },
+                        {
+                            id: "mongodb",
+                            name: "MongoDB + Express",
+                            icon: "🍃",
+                            type: "backend",
+                            position: { x: 2, y: 0, z: 1 },
+                            color: "#059669"
+                        },
+                        {
+                            id: "firebase",
+                            name: "Firebase Auth",
+                            icon: "🔥",
+                            type: "auth",
+                            position: { x: 0, y: -1, z: 0 },
+                            color: "#F59E0B"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "react-native", to: "openrouter", label: "AI Requests" },
+                        { from: "react-native", to: "mongodb", label: "Data Sync" },
+                        { from: "react-native", to: "firebase", label: "Authentication" }
+                    ]
+                }
+            },
+            {
+                id: "testing",
+                title: "Testing & Refinement",
+                description: "Tested AI accuracy, app performance, and user workflows across iOS and Android",
+                icon: "🧪",
+                position: { x: 4, y: 2.5, z: -2 },
+                achievements: [
+                    "Tested AI recipe generation accuracy",
+                    "Optimized database queries for performance",
+                    "Fixed cross-platform compatibility issues",
+                    "Validated calorie calculation accuracy",
+                    "Improved UI responsiveness"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#F59E0B",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "jest",
+                            name: "Jest Testing",
+                            icon: "🃏",
+                            type: "testing",
+                            position: { x: -1.5, y: 0.5, z: 0 },
+                            color: "#F59E0B"
+                        },
+                        {
+                            id: "expo-go",
+                            name: "Expo Go Testing",
+                            icon: "📱",
+                            type: "testing",
+                            position: { x: 1.5, y: 0.5, z: 0 },
+                            color: "#FB923C"
+                        },
+                        {
+                            id: "mongodb-perf",
+                            name: "DB Performance",
+                            icon: "⚡",
+                            type: "optimization",
+                            position: { x: 0, y: -0.5, z: 1 },
+                            color: "#FDBA74"
+                        },
+                        {
+                            id: "ai-validation",
+                            name: "AI Accuracy Check",
+                            icon: "✅",
+                            type: "validation",
+                            position: { x: 0, y: -0.5, z: -1 },
+                            color: "#EA580C"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "jest", to: "mongodb-perf", label: "Performance Tests" },
+                        { from: "expo-go", to: "ai-validation", label: "UI Tests" },
+                        { from: "ai-validation", to: "mongodb-perf", label: "Integration" }
+                    ]
+                }
+            },
+            {
+                id: "deployment",
+                title: "Launch & Monitoring",
+                description: "Deployed backend services and prepared app for distribution",
+                icon: "🚀",
+                position: { x: 8, y: 0, z: 0 },
+                achievements: [
+                    "Deployed backend to cloud platform",
+                    "Set up Firebase hosting",
+                    "Implemented analytics tracking",
+                    "Created user documentation"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#EF4444",
+                techArchitecture: {
+                    nodes: [
+                        {
+                            id: "heroku",
+                            name: "Heroku Backend",
+                            icon: "☁️",
+                            type: "hosting",
+                            position: { x: -1.5, y: 0, z: 0.5 },
+                            color: "#EF4444"
+                        },
+                        {
+                            id: "expo-eas",
+                            name: "Expo EAS Build",
+                            icon: "📦",
+                            type: "build",
+                            position: { x: 1.5, y: 0, z: 0.5 },
+                            color: "#F87171"
+                        },
+                        {
+                            id: "firebase-analytics",
+                            name: "Firebase Analytics",
+                            icon: "📊",
+                            type: "monitoring",
+                            position: { x: 0, y: 0.8, z: -0.5 },
+                            color: "#FCA5A5"
+                        },
+                        {
+                            id: "mongodb-atlas",
+                            name: "MongoDB Atlas",
+                            icon: "🗄️",
+                            type: "database",
+                            position: { x: 0, y: -0.8, z: -0.5 },
+                            color: "#DC2626"
+                        }
+                    ],
+                    dataFlow: [
+                        { from: "heroku", to: "mongodb-atlas", label: "Data Connection" },
+                        { from: "expo-eas", to: "firebase-analytics", label: "App Events" },
+                        { from: "heroku", to: "firebase-analytics", label: "Backend Metrics" }
+                    ]
+                }
+            }
+        ]
     },
     {
         id: 3,
@@ -104,7 +686,92 @@ const projects = [
         image: "/images/project3.png",
         tags: ["Python", "Flask", "Streamlit", "LLM API"],
         liveUrl: "#",
-        githubUrl: "https://github.com/wolverine9039/personalized_recipe_ai.git"
+        githubUrl: "https://github.com/wolverine9039/personalized_recipe_ai.git",
+        stages: [
+            {
+                id: "planning",
+                title: "Planning & Research",
+                description: "Researched LLM APIs and planned the recipe generation system architecture",
+                icon: "🎯",
+                position: { x: -8, y: 0, z: 0 },
+                achievements: [
+                    "Researched available LLM APIs (OpenRouter)",
+                    "Defined AI prompt engineering strategies",
+                    "Planned Flask backend architecture",
+                    "Designed recipe data structure"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#3B82F6"
+            },
+            {
+                id: "design",
+                title: "System Design",
+                description: "Designed UI prototypes and API integration flow for recipe generation",
+                icon: "📐",
+                position: { x: -4, y: 2.5, z: -2 },
+                achievements: [
+                    "Created Streamlit interface mockups",
+                    "Designed API request/response flow",
+                    "Planned user authentication system",
+                    "Defined dietary restriction filters"
+                ],
+                technologies: ["Python", "Streamlit", "Flask"],
+                progress: 100,
+                unlocked: true,
+                color: "#8B5CF6"
+            },
+            {
+                id: "development",
+                title: "Implementation",
+                description: "Built Flask backend, integrated LLM API, and created Streamlit interface",
+                icon: "⚙️",
+                position: { x: 0, y: 0, z: 0 },
+                achievements: [
+                    "Developed Flask API endpoints",
+                    "Integrated OpenRouter LLM for recipe generation",
+                    "Built Streamlit interactive frontend",
+                    "Implemented CSV-based user storage",
+                    "Added prompt engineering for accurate outputs"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#10B981"
+            },
+            {
+                id: "testing",
+                title: "Testing & Optimization",
+                description: "Tested AI outputs, optimized prompts, and improved user experience",
+                icon: "🧪",
+                position: { x: 4, y: 2.5, z: -2 },
+                achievements: [
+                    "Validated AI recipe accuracy",
+                    "Optimized prompt engineering",
+                    "Tested dietary restriction filters",
+                    "Improved response streaming performance",
+                    "Fixed edge cases in recipe generation"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#F59E0B"
+            },
+            {
+                id: "deployment",
+                title: "Deployment",
+                description: "Deployed application and prepared for public access",
+                icon: "🚀",
+                position: { x: 8, y: 0, z: 0 },
+                achievements: [
+                    "Deployed Flask backend",
+                    "Set up Streamlit hosting",
+                    "Created user documentation",
+                    "Implemented usage analytics"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#EF4444"
+            }
+        ]
     },
     {
         id: 1,
@@ -131,7 +798,93 @@ const projects = [
         image: "/images/project1.png",
         tags: ["Java", "Android SDK", "AES/RSA", "Huffman Compression"],
         liveUrl: "#",
-        githubUrl: "https://github.com/wolverine9039/Cipher-Shield.git"
+        githubUrl: "https://github.com/wolverine9039/Cipher-Shield.git",
+        stages: [
+            {
+                id: "planning",
+                title: "Planning & Research",
+                description: "Researched encryption algorithms and planned hybrid security approach",
+                icon: "🎯",
+                position: { x: -8, y: 0, z: 0 },
+                achievements: [
+                    "Researched AES and RSA encryption methods",
+                    "Planned hybrid encryption strategy",
+                    "Studied Huffman compression algorithms",
+                    "Defined Android app architecture"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#3B82F6"
+            },
+            {
+                id: "design",
+                title: "Architecture Design",
+                description: "Designed encryption flow, key management system, and Android UI",
+                icon: "📐",
+                position: { x: -4, y: 2.5, z: -2 },
+                achievements: [
+                    "Designed hybrid encryption workflow (AES + RSA)",
+                    "Planned secure key management system",
+                    "Created Material Design UI mockups",
+                    "Defined file handling architecture"
+                ],
+                technologies: ["Java", "Android SDK", "Cryptography"],
+                progress: 100,
+                unlocked: true,
+                color: "#8B5CF6"
+            },
+            {
+                id: "development",
+                title: "Implementation",
+                description: "Built Android app with hybrid encryption and Huffman compression",
+                icon: "⚙️",
+                position: { x: 0, y: 0, z: 0 },
+                achievements: [
+                    "Implemented AES-256 encryption",
+                    "Integrated RSA-2048 for key exchange",
+                    "Added Huffman compression algorithm",
+                    "Built Material Design Android UI",
+                    "Created secure key store mechanism",
+                    "Implemented file chunking for large files"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#10B981"
+            },
+            {
+                id: "testing",
+                title: "Security Testing",
+                description: "Tested encryption strength, performance, and security vulnerabilities",
+                icon: "🧪",
+                position: { x: 4, y: 2.5, z: -2 },
+                achievements: [
+                    "Validated encryption/decryption accuracy",
+                    "Tested large file handling",
+                    "Performed security audit",
+                    "Optimized memory usage for ARM devices",
+                    "Added file integrity verification"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#F59E0B"
+            },
+            {
+                id: "deployment",
+                title: "Release",
+                description: "Published app and created user documentation",
+                icon: "🚀",
+                position: { x: 8, y: 0, z: 0 },
+                achievements: [
+                    "Prepared APK for distribution",
+                    "Created comprehensive user guide",
+                    "Added security best practices documentation",
+                    "Published source code on GitHub"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#EF4444"
+            }
+        ]
     },
     {
         id: 5,
@@ -159,7 +912,93 @@ const projects = [
         image: "/images/project5.png",
         tags: ["Java", "MySQL", "JDBC", "Swing UI"],
         liveUrl: "#",
-        githubUrl: "#"
+        githubUrl: "#",
+        stages: [
+            {
+                id: "planning",
+                title: "Planning & Requirements",
+                description: "Gathered payroll requirements and planned database structure",
+                icon: "🎯",
+                position: { x: -8, y: 0, z: 0 },
+                achievements: [
+                    "Defined payroll calculation requirements",
+                    "Planned employee data management features",
+                    "Researched tax and deduction rules",
+                    "Outlined reporting requirements"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#3B82F6"
+            },
+            {
+                id: "design",
+                title: "Database & UI Design",
+                description: "Designed MySQL schema and created Java Swing interface mockups",
+                icon: "📐",
+                position: { x: -4, y: 2.5, z: -2 },
+                achievements: [
+                    "Designed normalized database schema",
+                    "Created entity-relationship diagrams",
+                    "Designed Java Swing UI layouts",
+                    "Planned workflow-based navigation"
+                ],
+                technologies: ["Java Swing", "MySQL", "JDBC"],
+                progress: 100,
+                unlocked: true,
+                color: "#8B5CF6"
+            },
+            {
+                id: "development",
+                title: "Implementation",
+                description: "Built desktop application with database connectivity and payroll logic",
+                icon: "⚙️",
+                position: { x: 0, y: 0, z: 0 },
+                achievements: [
+                    "Developed Java Swing desktop application",
+                    "Implemented MySQL database with JDBC",
+                    "Built automated salary calculation engine",
+                    "Added attendance and leave tracking",
+                    "Created payroll report generation",
+                    "Implemented payment slip creation"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#10B981"
+            },
+            {
+                id: "testing",
+                title: "Testing & Validation",
+                description: "Tested calculations, database operations, and user workflows",
+                icon: "🧪",
+                position: { x: 4, y: 2.5, z: -2 },
+                achievements: [
+                    "Validated salary calculations accuracy",
+                    "Tested database indexing performance",
+                    "Verified report generation",
+                    "Conducted user acceptance testing",
+                    "Fixed data validation issues"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#F59E0B"
+            },
+            {
+                id: "deployment",
+                title: "Deployment",
+                description: "Deployed system and trained users",
+                icon: "🚀",
+                position: { x: 8, y: 0, z: 0 },
+                achievements: [
+                    "Deployed application to client systems",
+                    "Set up MySQL database server",
+                    "Created user training materials",
+                    "Provided technical documentation"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#EF4444"
+            }
+        ]
     }
 ];
 

@@ -8,10 +8,10 @@ import Journey from "./sections/Journey.jsx";
 import Skills from "./sections/Skills.jsx";
 import Contact from "./sections/Contact.jsx";
 import Footer from "./components/layout/Footer.jsx";
-import ThemeToggle from "./components/ui/ThemeToggle.jsx";
 import ProjectDetails from "./pages/ProjectDetails.jsx";
 
-const Home = ({ isDark }) => {
+
+const Home = () => {
     const location = useLocation();
 
     useEffect(() => {
@@ -29,30 +29,29 @@ const Home = ({ isDark }) => {
 
     return (
         <>
-            <Hero isDark={isDark} />
-            <Projects isDark={isDark} />
-            <Journey isDark={isDark} />
-            <Skills isDark={isDark} />
-            <Contact isDark={isDark} />
+            <Hero />
+            <Projects />
+            <Skills />
+            <Journey />
+            <Contact />
         </>
     );
 };
 
 const App = () => {
-    const [isDark, setIsDark] = useState(true);
     const location = useLocation();
 
     return (
-        <div className={`${isDark ? 'dark' : ''} transition-colors duration-500`}>
-            <div className="bg-gray-50 dark:bg-black text-black dark:text-white min-h-screen">
-                <NavBar isDark={isDark} setIsDark={setIsDark} />
+        <div className="dark transition-colors duration-500">
+            <div className="bg-black text-white min-h-screen">
+                <NavBar />
                 <AnimatePresence mode="wait">
                     <Routes location={location} key={location.pathname}>
-                        <Route path="/" element={<Home isDark={isDark} />} />
-                        <Route path="/project/:id" element={<ProjectDetails isDark={isDark} />} />
+                        <Route path="/" element={<Home />} />
+                        <Route path="/project/:id" element={<ProjectDetails />} />
                     </Routes>
                 </AnimatePresence>
-                <Footer isDark={isDark} />
+                <Footer />
             </div>
         </div>
     );

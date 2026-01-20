@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import ThemeToggle from "./ui/ThemeToggle";
 
-const NavBar = ({ isDark, setIsDark }) => {
+const NavBar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const navigate = useNavigate();
@@ -12,7 +11,10 @@ const NavBar = ({ isDark, setIsDark }) => {
         e.preventDefault();
         setMobileMenuOpen(false);
 
-        if (location.pathname === '/') {
+        // If it's a route (starts with /), navigate directly
+        if (link.startsWith('/')) {
+            navigate(link);
+        } else if (location.pathname === '/') {
             const element = document.querySelector(link);
             if (element) {
                 const yOffset = -80;
@@ -34,8 +36,8 @@ const NavBar = ({ isDark, setIsDark }) => {
 
     const navLinks = [
         { name: "Projects", link: "#projects" },
-        { name: "Journey", link: "#journey" },
         { name: "Skills", link: "#skills" },
+        { name: "Journey", link: "#journey" },
         { name: "Contact", link: "#contact" },
     ];
 
@@ -43,15 +45,14 @@ const NavBar = ({ isDark, setIsDark }) => {
         <header
             className={`fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-50 transition-all duration-500 
             ${scrolled
-                    ? `top-0 ${isDark ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-lg shadow-lg border-b ${isDark ? 'border-white/10' : 'border-black/10'}`
+                    ? 'top-0 bg-black/90 backdrop-blur-lg shadow-lg border-b border-white/10'
                     : 'md:top-10 top-0 bg-transparent'
                 }`}
         >
             <div className="mx-auto flex items-center justify-between max-w-7xl">
-                <a
-                    href="#hero"
-                    className={`flex items-center gap-3 text-xl md:text-2xl font-bold transition-all duration-300 hover:scale-105 
-                    ${isDark ? 'text-white' : 'text-black'}`}
+                <button
+                    onClick={(e) => handleNavClick(e, '#hero')}
+                    className="flex items-center gap-3 text-xl md:text-2xl font-bold transition-all duration-300 hover:scale-105 text-white"
                 >
                     <img
                         src="/images/profile1.png"
@@ -59,38 +60,27 @@ const NavBar = ({ isDark, setIsDark }) => {
                         className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-purple-500 shadow-lg object-cover"
                     />
                     Mayank Bisht
-                </a>
+                </button>
 
                 <nav className="hidden lg:flex items-center gap-12">
                     {navLinks.map(({ link, name }) => (
                         <button
                             key={name}
                             onClick={(e) => handleNavClick(e, link)}
-                            className={`relative group transition-colors duration-300 text-sm font-medium
-                            ${isDark ? 'text-white/70 hover:text-white' : 'text-black/70 hover:text-black'}`}
+                            className="relative group transition-colors duration-300 text-sm font-medium text-white/70 hover:text-white"
                         >
                             {name}
-                            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full 
-                            ${isDark ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`} />
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full bg-gradient-to-r from-purple-500 to-pink-500" />
                         </button>
                     ))}
                 </nav>
 
                 <button
                     onClick={(e) => handleNavClick(e, '#contact')}
-                    className={`hidden lg:block px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl
-                    ${isDark
-                            ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500'
-                            : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-500 hover:to-cyan-500'
-                        }`}
+                    className="hidden lg:block px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500"
                 >
                     Get in Touch
                 </button>
-
-                {/* Theme Toggle */}
-                <div className="hidden lg:block ml-4">
-                    <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
-                </div>
 
                 {/* Mobile menu button */}
                 <button
@@ -98,36 +88,28 @@ const NavBar = ({ isDark, setIsDark }) => {
                     className="lg:hidden p-2"
                 >
                     <div className="w-6 h-5 flex flex-col justify-between">
-                        <span className={`w-full h-0.5 ${isDark ? 'bg-white' : 'bg-black'} transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                        <span className={`w-full h-0.5 ${isDark ? 'bg-white' : 'bg-black'} transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-                        <span className={`w-full h-0.5 ${isDark ? 'bg-white' : 'bg-black'} transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                        <span className="w-full h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}" />
+                        <span className="w-full h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}" />
+                        <span className="w-full h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}" />
                     </div>
                 </button>
             </div>
 
             {/* Mobile menu */}
-            <div className={`lg:hidden absolute top-full left-0 w-full transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'} ${isDark ? 'bg-black/95' : 'bg-white/95'} backdrop-blur-lg`}>
+            <div className={`lg:hidden absolute top-full left-0 w-full transition-all duration-500 ${mobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'} bg-black/95 backdrop-blur-lg`}>
                 <nav className="flex flex-col p-6 gap-4">
-                    <div className="flex justify-between items-center mb-4">
-                        <span className={`text-lg font-bold ${isDark ? 'text-white' : 'text-black'}`}>Menu</span>
-                        <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
-                    </div>
                     {navLinks.map(({ link, name }) => (
                         <button
                             key={name}
                             onClick={(e) => handleNavClick(e, link)}
-                            className={`w-full py-3 border-b text-left ${isDark ? 'border-white/10 text-white' : 'border-black/10 text-black'}`}
+                            className="w-full py-3 border-b border-white/10 text-left text-white"
                         >
                             {name}
                         </button>
                     ))}
                     <button
                         onClick={(e) => handleNavClick(e, '#contact')}
-                        className={`mt-2 w-full px-6 py-3 rounded-full text-center font-medium
-                        ${isDark
-                                ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white'
-                                : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white'
-                            }`}
+                        className="mt-2 w-full px-6 py-3 rounded-full text-center font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white"
                     >
                         Get in Touch
                     </button>

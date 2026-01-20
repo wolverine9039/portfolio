@@ -50,6 +50,10 @@ pipeline {
                 script {
                     try {
                         sh """
+                            # Log dependencies for debugging
+                            echo "📦 Installed Dependencies:"
+                            npm list --depth=0 || true
+
                             # Build with build number tag
                             docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
                             
