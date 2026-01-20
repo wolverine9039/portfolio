@@ -10,7 +10,7 @@ const HeroExperience = () => {
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
     return (
-        <Canvas camera={{ position: [37.5, 7.5, 11.25], fov: 30 }}>
+        <Canvas camera={{ position: [28.125, 5.625, 8.4375], fov: 30 }}>
 
 
             <OrbitControls
