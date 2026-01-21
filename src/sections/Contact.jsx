@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -16,18 +17,40 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setSubmitStatus(null);
 
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            // Send email using EmailJS
+            const result = await emailjs.send(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    message: formData.message,
+                    to_name: 'Mayank Bisht', // Your name
+                },
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+            );
+
+            console.log('Email sent successfully:', result.text);
             setIsSubmitting(false);
             setSubmitStatus('success');
             setFormData({ name: '', email: '', message: '' });
 
-            setTimeout(() => setSubmitStatus(null), 3000);
-        }, 2000);
+            // Clear success message after 5 seconds
+            setTimeout(() => setSubmitStatus(null), 5000);
+        } catch (error) {
+            console.error('Email sending failed:', error);
+            setIsSubmitting(false);
+            setSubmitStatus('error');
+
+            // Clear error message after 5 seconds
+            setTimeout(() => setSubmitStatus(null), 5000);
+        }
     };
 
     const socialLinks = [
@@ -146,6 +169,13 @@ const Contact = () => {
                             {submitStatus === 'success' && (
                                 <div className="p-3 md:p-4 rounded-lg bg-green-500/20 text-green-400 text-center animate-fade-in text-sm md:text-base">
                                     ✓ Message sent successfully! I'll get back to you soon.
+                                </div>
+                            )}
+
+                            {/* Error Message */}
+                            {submitStatus === 'error' && (
+                                <div className="p-3 md:p-4 rounded-lg bg-red-500/20 text-red-400 text-center animate-fade-in text-sm md:text-base">
+                                    ✗ Failed to send message. Please try again or contact me directly via email.
                                 </div>
                             )}
                         </form>
