@@ -21,6 +21,8 @@ const Node = ({
 
     const [isLongPress, setIsLongPress] = React.useState(false);
     const longPressTimerRef = React.useRef(null);
+    const touchHandledRef = React.useRef(false); // Track if touch event was handled
+    const lastClickTimeRef = React.useRef(0); // Debounce rapid clicks
 
     const startLongPress = (e) => {
         setIsLongPress(false);
@@ -46,11 +48,22 @@ const Node = ({
         if (isLongPress) {
             e.preventDefault();
             e.stopPropagation();
-        } else {
-            // Normal click
-            if (e.type !== 'touchmove') {
-                onClick(node);
-            }
+            setIsLongPress(false);
+            return;
+        }
+
+        // Debounce: Prevent rapid clicks within 300ms
+        const now = Date.now();
+        if (now - lastClickTimeRef.current < 300) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+        }
+
+        // Normal click - only if not a touchmove
+        if (e.type !== 'touchmove') {
+            lastClickTimeRef.current = now;
+            onClick(node);
         }
     };
 
@@ -58,16 +71,45 @@ const Node = ({
         if (longPressTimerRef.current) {
             clearTimeout(longPressTimerRef.current);
         }
+        setIsLongPress(false);
     };
 
-    // Unified Handlers
-    const handleTouchStart = (e) => startLongPress(e);
-    const handleTouchEnd = (e) => endLongPress(e);
-    const handleTouchMove = () => cancelLongPress();
+    // Touch Handlers - prevent mouse events from firing
+    const handleTouchStart = (e) => {
+        touchHandledRef.current = true;
+        startLongPress(e);
+    };
 
-    const handleMouseDown = (e) => startLongPress(e);
-    const handleMouseUp = (e) => endLongPress(e);
-    const handleMouseLeave = () => cancelLongPress();
+    const handleTouchEnd = (e) => {
+        touchHandledRef.current = true;
+        endLongPress(e);
+        // Prevent mouse events from firing after touch
+        e.preventDefault();
+        // Reset after a delay
+        setTimeout(() => {
+            touchHandledRef.current = false;
+        }, 500);
+    };
+
+    const handleTouchMove = () => {
+        cancelLongPress();
+    };
+
+    // Mouse Handlers - ignore if touch was used
+    const handleMouseDown = (e) => {
+        if (touchHandledRef.current) return;
+        startLongPress(e);
+    };
+
+    const handleMouseUp = (e) => {
+        if (touchHandledRef.current) return;
+        endLongPress(e);
+    };
+
+    const handleMouseLeave = () => {
+        if (touchHandledRef.current) return;
+        cancelLongPress();
+    };
 
     return (
         <motion.g
