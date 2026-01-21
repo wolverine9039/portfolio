@@ -1,6 +1,16 @@
 # Stage 1: Build the application
 FROM node:20-alpine AS builder
 
+# Accept build arguments for EmailJS credentials
+ARG VITE_EMAILJS_SERVICE_ID
+ARG VITE_EMAILJS_TEMPLATE_ID
+ARG VITE_EMAILJS_PUBLIC_KEY
+
+# Set as environment variables for Vite build
+ENV VITE_EMAILJS_SERVICE_ID=$VITE_EMAILJS_SERVICE_ID
+ENV VITE_EMAILJS_TEMPLATE_ID=$VITE_EMAILJS_TEMPLATE_ID
+ENV VITE_EMAILJS_PUBLIC_KEY=$VITE_EMAILJS_PUBLIC_KEY
+
 # Set working directory
 WORKDIR /app
 
@@ -14,7 +24,7 @@ RUN npm ci && npm cache clean --force
 # Copy source code
 COPY . .
 
-# Build the application
+# Build the application (env vars will be embedded during build)
 RUN npm run build
 
 # Stage 2: Serve with nginx

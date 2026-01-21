@@ -49,21 +49,33 @@ pipeline {
                 echo '� Building Docker image...'
                 script {
                     try {
-                        sh """
-                            # Log dependencies for debugging
-                            echo "📦 Installed Dependencies:"
-                            npm list --depth=0 || true
+                        // Retrieve EmailJS credentials from Jenkins credentials store
+                        withCredentials([
+                            string(credentialsId: 'emailjs-service-id', variable: 'EMAILJS_SERVICE_ID'),
+                            string(credentialsId: 'emailjs-template-id', variable: 'EMAILJS_TEMPLATE_ID'),
+                            string(credentialsId: 'emailjs-public-key', variable: 'EMAILJS_PUBLIC_KEY')
+                        ]) {
+                            sh """
+                                # Log dependencies for debugging
+                                echo "📦 Installed Dependencies:"
+                                npm list --depth=0 || true
 
-                            # Build with build number tag
-                            docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
-                            
-                            # Also tag as latest
-                            docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
-                            
-                            # Verify image was created
-                            docker images | grep ${DOCKER_IMAGE}
-                        """
-                        echo '✅ Docker image built successfully'
+                                # Build with build args for EmailJS environment variables
+                                echo "🔑 Building with EmailJS configuration..."
+                                docker build \\
+                                    --build-arg VITE_EMAILJS_SERVICE_ID=\${EMAILJS_SERVICE_ID} \\
+                                    --build-arg VITE_EMAILJS_TEMPLATE_ID=\${EMAILJS_TEMPLATE_ID} \\
+                                    --build-arg VITE_EMAILJS_PUBLIC_KEY=\${EMAILJS_PUBLIC_KEY} \\
+                                    -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
+                                
+                                # Also tag as latest
+                                docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
+                                
+                                # Verify image was created
+                                docker images | grep ${DOCKER_IMAGE}
+                            """
+                        }
+                        echo '✅ Docker image built successfully with EmailJS configuration'
                     } catch (Exception e) {
                         echo "❌ Docker build failed: ${e.message}"
                         throw e
