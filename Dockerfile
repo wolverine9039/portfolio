@@ -30,14 +30,24 @@ RUN npm run build
 # Stage 2: Serve with nginx
 FROM nginx:alpine
 
+# Install OpenSSL for certificate generation
+RUN apk add --no-cache openssl
+
+# Copy SSL certificate generation script
+COPY generate-ssl-cert.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/generate-ssl-cert.sh
+
+# Generate self-signed SSL certificate
+RUN /usr/local/bin/generate-ssl-cert.sh
+
 # Copy custom nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose port 80
-EXPOSE 80
+# Expose ports 80 and 443
+EXPOSE 80 443
 
 # Add healthcheck
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
