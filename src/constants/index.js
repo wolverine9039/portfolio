@@ -52,7 +52,7 @@ const projects = [
         ],
         image: "/images/project4.png",
         tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
-        liveUrl": "https://buildwithmayank.tech",
+        liveUrl: "https://buildwithmayank.tech",
         githubUrl: "https://github.com/wolverine9039/portfolio",
         stages: [
             {
@@ -1106,3 +1106,4 @@ export {
     socialLinks,
     navLinks,
 };
+
