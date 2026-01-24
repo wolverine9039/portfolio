@@ -81,6 +81,24 @@ const Projects = () => {
             bgColor: "bg-purple-900/20"
         },
         {
+            id: 6,
+            title: "AlgoArena: DSA Learning Platform",
+            period: "Dec 2024 - Jan 2025",
+            description: "An interactive Data Structures and Algorithms learning platform with coding challenges, leaderboards, achievements, and visual algorithm explanations.",
+            features: [
+                "Built interactive coding challenges with difficulty levels (Easy, Medium, Hard)",
+                "Implemented comprehensive achievement system with tiered badges",
+                "Created global and problem-specific leaderboards",
+                "Added interactive DSA lessons with accordion-based content",
+                "Developed progress tracking dashboard with skill analytics",
+                "Integrated localStorage for persistent user data"
+            ],
+            image: "/images/algoarena.png",
+            tags: ["React", "Vite", "JavaScript", "CSS", "LocalStorage"],
+            gradient: "from-indigo-600 to-purple-600",
+            bgColor: "bg-indigo-900/20"
+        },
+        {
             id: 5,
             title: "Employee Payroll Management System",
             period: "Aug 2024 - Oct 2024",

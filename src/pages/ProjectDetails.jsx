@@ -9,6 +9,7 @@ const ProjectDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const project = projects.find(p => p.id === parseInt(id));
+    const [showDemoModal, setShowDemoModal] = useState(false);
 
 
     useEffect(() => {
@@ -70,14 +71,23 @@ const ProjectDetails = () => {
                             >
                                 View Source Code
                             </a>
-                            <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-6 md:px-8 py-3 rounded-xl font-medium border-2 transition-all transform hover:scale-105 shadow-lg border-white text-white hover:bg-white/10"
-                            >
-                                Live Demo
-                            </a>
+                            {project.arcadeEmbed ? (
+                                <button
+                                    onClick={() => setShowDemoModal(true)}
+                                    className="px-6 md:px-8 py-3 rounded-xl font-medium border-2 transition-all transform hover:scale-105 shadow-lg border-white text-white hover:bg-white/10"
+                                >
+                                    Live Demo
+                                </button>
+                            ) : (
+                                <a
+                                    href={project.liveUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-6 md:px-8 py-3 rounded-xl font-medium border-2 transition-all transform hover:scale-105 shadow-lg border-white text-white hover:bg-white/10"
+                                >
+                                    Live Demo
+                                </a>
+                            )}
                         </div>
                     </motion.div>
                 </div>
@@ -104,7 +114,6 @@ const ProjectDetails = () => {
                             </p>
                         </div>
                     </section>
-
 
 
                     {/* Key Features Wrapper */}
@@ -161,6 +170,44 @@ const ProjectDetails = () => {
                 </div>
             </div>
 
+            {/* Demo Modal */}
+            {showDemoModal && project.arcadeEmbed && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+                    onClick={() => setShowDemoModal(false)}
+                >
+                    <div
+                        className="relative w-[95vw] h-[85vh] max-w-7xl bg-gray-900 rounded-2xl overflow-hidden border border-white/20 shadow-2xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Modal Header */}
+                        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-gray-900">
+                            <h3 className="text-xl font-bold text-white">Interactive Demo - {project.title}</h3>
+                            <button
+                                onClick={() => setShowDemoModal(false)}
+                                className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        {/* Iframe Container */}
+                        <div className="w-full h-[calc(100%-60px)]">
+                            <iframe
+                                src={project.arcadeEmbed}
+                                title={`${project.title} Demo`}
+                                frameBorder="0"
+                                loading="lazy"
+                                allowFullScreen
+                                allow="clipboard-write"
+                                className="w-full h-full"
+                                style={{ colorScheme: 'light' }}
+                            />
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </motion.div>
     );

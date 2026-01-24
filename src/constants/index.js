@@ -893,6 +893,121 @@ const projects = [
         ]
     },
     {
+        id: 6,
+        title: "AlgoArena: DSA Learning Platform",
+        description: "An interactive Data Structures and Algorithms learning platform with coding challenges, leaderboards, achievements, and visual algorithm explanations.",
+        longDescription: "AlgoArena is a comprehensive platform designed to help developers master Data Structures and Algorithms through hands-on practice. The application features an extensive library of coding challenges across various difficulty levels, interactive lessons with visual explanations, a gamification system with achievements and points, and competitive leaderboards. Users can track their progress, view detailed solution explanations, and compete with others while building their problem-solving skills.",
+        challenges: [
+            "Creating an engaging gamification system that motivates consistent learning.",
+            "Implementing a robust code execution and validation system for challenge submissions.",
+            "Designing visual explanations for complex algorithms and data structures."
+        ],
+        solutions: [
+            "Built comprehensive achievement and points system with tiered rewards and skill tracking.",
+            "Developed custom test case validation with performance metrics and detailed feedback.",
+            "Created interactive visualizations and accordion-based lessons for step-by-step learning."
+        ],
+        features: [
+            "Interactive Coding Challenges by Difficulty",
+            "Comprehensive DSA Lessons with Visual Explanations",
+            "Achievement System with Tiered Badges",
+            "Global & Problem-Specific Leaderboards",
+            "Progress Tracking Dashboard",
+            "Skill Radar Chart Analytics"
+        ],
+        image: "/images/algoarena.png",
+        tags: ["React", "Vite", "JavaScript", "CSS", "LocalStorage"],
+        liveUrl: "#",
+        arcadeEmbed: "https://demo.arcade.software/ESBVKWHIIbAev5wQD3fE?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true",
+        githubUrl: "https://github.com/wolverine9039/AlgoArena",
+        stages: [
+            {
+                id: "planning",
+                title: "Planning & Research",
+                description: "Researched DSA learning platforms and planned gamification features",
+                icon: "🎯",
+                position: { x: -8, y: 0, z: 0 },
+                achievements: [
+                    "Analyzed popular DSA learning platforms",
+                    "Defined challenge categories and difficulty levels",
+                    "Planned achievement and points system",
+                    "Designed leaderboard ranking algorithm"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#3B82F6"
+            },
+            {
+                id: "design",
+                title: "UI/UX Design",
+                description: "Designed dark-themed interface with focus on code readability and user engagement",
+                icon: "📐",
+                position: { x: -4, y: 2.5, z: -2 },
+                achievements: [
+                    "Created challenge interface with code editor",
+                    "Designed progress dashboard layout",
+                    "Planned achievement badge icons",
+                    "Designed leaderboard components"
+                ],
+                technologies: ["React", "CSS", "Figma"],
+                progress: 100,
+                unlocked: true,
+                color: "#8B5CF6"
+            },
+            {
+                id: "development",
+                title: "Implementation",
+                description: "Built React application with challenge system, achievements, and leaderboards",
+                icon: "⚙️",
+                position: { x: 0, y: 0, z: 0 },
+                achievements: [
+                    "Developed React components with Vite",
+                    "Implemented challenge submission system",
+                    "Built achievement tracking with localStorage",
+                    "Created leaderboard with filtering",
+                    "Added interactive DSA lessons",
+                    "Implemented skill progress visualization"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#10B981"
+            },
+            {
+                id: "testing",
+                title: "Testing & Refinement",
+                description: "Tested challenge validations, achievement unlocks, and UI responsiveness",
+                icon: "🧪",
+                position: { x: 4, y: 2.5, z: -2 },
+                achievements: [
+                    "Validated challenge test cases",
+                    "Tested achievement unlock conditions",
+                    "Verified leaderboard calculations",
+                    "Optimized component rendering",
+                    "Fixed mobile responsiveness issues"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#F59E0B"
+            },
+            {
+                id: "deployment",
+                title: "Launch",
+                description: "Deployed application and prepared for public access",
+                icon: "🚀",
+                position: { x: 8, y: 0, z: 0 },
+                achievements: [
+                    "Deployed to hosting platform",
+                    "Added comprehensive problem library",
+                    "Created user documentation",
+                    "Implemented dark mode throughout"
+                ],
+                progress: 100,
+                unlocked: true,
+                color: "#EF4444"
+            }
+        ]
+    },
+    {
         id: 5,
         title: "Employee Payroll Management System",
         description: "A comprehensive payroll management system built with Java and MySQL for automated salary calculations and employee data management.",
