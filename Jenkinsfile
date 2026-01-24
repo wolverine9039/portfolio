@@ -133,6 +133,7 @@ pipeline {
                             docker run -d \
                                 --name ${CONTAINER_NAME} \
                                 -p ${CONTAINER_PORT}:80 \
+                                -p 443:443 \
                                 --restart unless-stopped \
                                 ${DOCKER_IMAGE}:${DOCKER_TAG}
                             
