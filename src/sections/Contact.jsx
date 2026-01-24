@@ -69,7 +69,7 @@ const Contact = () => {
         {
             name: "Email",
             icon: "📧",
-            url: "mailto:mayankbisht939@gmail.com",
+            url: "mailto:mayankbisht@buildwithmayank.tech",
             color: "hover:bg-pink-500/20"
         },
         {
@@ -206,7 +206,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="font-medium text-sm md:text-base text-white">Email</p>
-                                        <p className="text-xs md:text-sm text-gray-400 break-all">mayankbisht939@gmail.com</p>
+                                        <p className="text-xs md:text-sm text-gray-400 break-all">mayankbisht@buildwithmayank.tech</p>
                                     </div>
                                 </div>
 

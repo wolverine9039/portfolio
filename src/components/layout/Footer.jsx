@@ -11,7 +11,7 @@ const Footer = () => {
         Social: [
             { name: "GitHub", href: "https://github.com/wolverine9039" },
             { name: "LinkedIn", href: "https://www.linkedin.com/in/mayank-bisht-51069524b" },
-            { name: "Email", href: "mailto:mayankbisht939@gmail.com" }
+            { name: "Email", href: "mailto:mayankbisht@buildwithmayank.tech" }
         ],
         Legal: [
             { name: "Privacy Policy", href: "#" },
