@@ -45,11 +45,14 @@ const projects = [
             "Automated Build, Test, and Deployment Pipeline",
             "Ansible Playbook Orchestration",
             "Docker Containerization and Deployment",
-            "Automated Rollback on Failure"
+            "Automated Rollback on Failure",
+            "Custom Domain Integration (buildwithmayank.tech)",
+            "HTTPS with SSL Certificate & Cloudflare",
+            "Nginx Reverse Proxy Configuration"
         ],
         image: "/images/project4.png",
         tags: ["Jenkins", "Ansible", "Docker", "AWS EC2", "CI/CD", "DevOps"],
-        liveUrl: "#",
+        liveUrl": "https://buildwithmayank.tech",
         githubUrl: "https://github.com/wolverine9039/portfolio",
         stages: [
             {
@@ -293,6 +296,9 @@ const projects = [
                 achievements: [
                     "Successfully automated code-to-production flow",
                     "Achieved zero-downtime deployments",
+                    "Configured custom domain with HTTPS (buildwithmayank.tech)",
+                    "Integrated Cloudflare for SSL/TLS and CDN",
+                    "Implemented nginx with SSL certificate generation",
                     "Monitored pipeline performance metrics",
                     "Documented deployment procedures"
                 ],
