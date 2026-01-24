@@ -23,6 +23,13 @@ const Contact = () => {
         setSubmitStatus(null);
 
         try {
+            // Debug: Check if env vars are present (remove after debugging)
+            console.log('EmailJS Debug:', {
+                serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID ? 'present' : 'MISSING',
+                templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID ? 'present' : 'MISSING',
+                publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY ? 'present' : 'MISSING',
+            });
+
             // Send email using EmailJS
             const result = await emailjs.send(
                 import.meta.env.VITE_EMAILJS_SERVICE_ID,
