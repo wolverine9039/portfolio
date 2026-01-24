@@ -8,6 +8,7 @@ services:
     container_name: 3d-portfolio
     ports:
       - "8080:80"
+      - "443:443"
     restart: unless-stopped
     environment:
       - NODE_ENV=production
