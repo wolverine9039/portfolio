@@ -804,6 +804,7 @@ const projects = [
         image: "/images/project1.png",
         tags: ["Java", "Android SDK", "AES/RSA", "Huffman Compression"],
         liveUrl: "#",
+        arcadeEmbed: "https://demo.arcade.software/GN7UWPuor6znWFJ79MVn?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true",
         githubUrl: "https://github.com/wolverine9039/Cipher-Shield.git",
         stages: [
             {
