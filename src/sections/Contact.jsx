@@ -82,7 +82,7 @@ const Contact = () => {
         {
             name: "Phone",
             icon: "📱",
-            url: "tel:+916397902354",
+            url: "tel:+916397590254",
             color: "hover:bg-green-500/20"
         }
     ];
