@@ -66,7 +66,7 @@ const Footer = () => {
                             © {currentYear} Mayank Bisht. All rights reserved.
                         </p>
                         <p className="text-xs md:text-sm text-gray-400">
-                            Made with <span className="text-red-500">💕</span> in India
+                            Made with <span className="text-red-500">😍</span> in India
                         </p>
                     </div>
                 </div>
